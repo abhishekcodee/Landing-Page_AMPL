@@ -15,11 +15,12 @@ Absolute Motion combines precision robotics, advanced motion control, and intell
    - **Case Study 1 (Kit Assembly Machine):** Vision-guided servo machine for pregnancy testing kits (40 kits/min, 75% rejection reduction, payback under 6 months).
    - **Case Study 2 (Torque Capping Machine):** 12-axis servo capping line eliminating straw bending with 90% better cap placement.
    - **Case Study 3 (Fully Automated Bottle Line):** Integrated rotary filling, capping, BOPP labelling, thermal tunnels, and robotic palletizing up to 500 BPM.
-3. **Dedicated Consultation & RFQ Portal (`discuss-project.html`):**
-   - Clean, high-converting consultation form.
+3. **Dedicated Consultation & RFQ Section (`#discuss-project`):**
+   - Clean, high-converting consultation form placed directly above the footer.
+   - Smooth scroll anchor: clicking "Discuss Your Project" anywhere on the page glides smoothly down to this form.
    - Mandatory fields: **Full Name**, **Phone Number**, **Email Address**.
    - Optional fields: **Company Name**, **Machine Specifications / Requirements**.
-   - Automated routing: Submissions transmit directly to **`adsilva@absolutemotion.in`** via asynchronous API with fallback support.
+   - Automated routing: Submissions transmit directly to **`adsilva@absolutemotion.in`** via asynchronous background API without opening external mail clients.
 4. **Formal Corporate Footer:** Complete facility credentials in TTC Industrial Area, Rabale MIDC, Navi Mumbai, verified contact desk, and official social channels (Instagram, Facebook, LinkedIn).
 
 ---
@@ -27,8 +28,7 @@ Absolute Motion combines precision robotics, advanced motion control, and intell
 ## 📁 Repository Structure
 
 ```
-├── index.html                 # Main landing page with Hero and Case Studies
-├── discuss-project.html       # Dedicated project consultation & RFQ form
+├── index.html                 # Unified single-page landing page with Hero, Case Studies & Consultation Form
 ├── assets/
 │   └── images/                # High-resolution industrial photography & corporate branding
 │       ├── logo.png           # Absolute Motion primary brand mark
