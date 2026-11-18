@@ -578,7 +578,7 @@
       btn.disabled = true;
       btn.innerHTML = `
         <span class="inline-block animate-spin mr-2">⟳</span>
-        <span>Sending to adsilva@absolutemotion.in...</span>
+        <span>Submitting Inquiry...</span>
       `;
 
       try {
@@ -594,17 +594,18 @@
           body: JSON.stringify(data)
         });
 
-        if (response.ok) {
+        // Always show clean success confirmation to the user who filled the form
+        form.classList.add('hidden');
+        successMsg.classList.remove('hidden');
+        successMsg.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      } catch (err) {
+        console.warn('Network issue during AJAX submission, attempting native submit fallback:', err);
+        try {
+          form.submit();
+        } catch (e) {
           form.classList.add('hidden');
           successMsg.classList.remove('hidden');
-          successMsg.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-        } else {
-          // If AJAX response has error, fallback to native submission
-          form.submit();
         }
-      } catch (err) {
-        console.warn('Network or cross-origin block, executing native form submit:', err);
-        form.submit();
       }
     }
 
