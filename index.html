@@ -107,7 +107,8 @@
 <body class="bg-white font-body text-slate-800 antialiased selection:bg-primary selection:text-white flex flex-col min-h-screen">
 
   <!-- =========================================================================
-       1. GLOBAL CORPORATE HEADER & NAVIGATION
+       1. GLOBAL CORPORATE HEADER
+       Only Brand Logo and Discuss Your Project button (desktop & mobile)
        ========================================================================= -->
   <header class="sticky top-0 w-full z-50 bg-white/95 backdrop-blur-xl border-b border-slate-200/80 shadow-[0_2px_12px_rgba(0,0,0,0.03)] transition-all">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 h-16 sm:h-20 flex items-center justify-between gap-3 sm:gap-6">
@@ -121,48 +122,15 @@
         </div>
       </a>
 
-      <!-- Desktop Navigation -->
-      <nav class="hidden lg:flex items-center gap-6 xl:gap-7 font-brand text-xs xl:text-sm font-semibold uppercase tracking-wider text-slate-700">
-        <a href="#hero" class="hover:text-primary transition-colors py-1">Overview</a>
-        <a href="#about" class="hover:text-primary transition-colors py-1">About Us</a>
-        <a href="#offerings" class="hover:text-primary transition-colors py-1">Capabilities</a>
-        <a href="#packaging-focus" class="hover:text-primary transition-colors py-1 text-primary">Packaging Focus</a>
-        <a href="#highlights" class="hover:text-primary transition-colors py-1">Highlights</a>
-        <a href="#video-showcase" class="hover:text-primary transition-colors py-1">Video</a>
-        <a href="#case-studies" class="hover:text-primary transition-colors py-1">Case Studies</a>
-        <a href="#testimonials" class="hover:text-primary transition-colors py-1">Testimonials</a>
-      </nav>
-
-      <!-- Action Button & Mobile Menu Toggle -->
-      <div class="flex items-center gap-2 sm:gap-3">
+      <!-- Action Button -->
+      <div>
         <a href="#discuss-project"
-          class="inline-flex items-center justify-center gap-1.5 sm:gap-2 h-9 sm:h-11 px-3.5 sm:px-6 rounded-full bg-primary text-white font-brand text-[11px] sm:text-sm font-semibold uppercase tracking-wider shadow-sm hover:bg-primary-hover hover:shadow-card hover:-translate-y-0.5 active:scale-[0.99] transition-all whitespace-nowrap">
+          class="inline-flex items-center justify-center gap-1.5 sm:gap-2 h-9 sm:h-11 px-4 sm:px-6 rounded-full bg-primary text-white font-brand text-xs sm:text-sm font-semibold uppercase tracking-wider shadow-sm hover:bg-primary-hover hover:shadow-card hover:-translate-y-0.5 active:scale-[0.99] transition-all whitespace-nowrap">
           <span>Discuss Your Project</span>
           <span class="material-symbols-outlined text-[15px] sm:text-[18px]">arrow_forward</span>
         </a>
-
-        <!-- Mobile Menu Toggle Button -->
-        <button type="button" onclick="toggleMobileMenu()" aria-label="Toggle Navigation Menu"
-          class="lg:hidden inline-flex items-center justify-center w-9 h-9 rounded-lg border border-slate-200 text-slate-700 hover:bg-slate-100 transition-colors">
-          <span id="mobile-menu-icon" class="material-symbols-outlined text-[22px]">menu</span>
-        </button>
       </div>
 
-    </div>
-
-    <!-- Mobile Dropdown Navigation -->
-    <div id="mobile-nav" class="hidden lg:hidden border-t border-slate-200 bg-white/98 backdrop-blur-xl px-4 py-3 shadow-lg">
-      <div class="flex flex-col space-y-2 font-brand text-xs font-semibold uppercase tracking-wider text-slate-700">
-        <a href="#hero" onclick="toggleMobileMenu()" class="py-2 px-3 rounded-lg hover:bg-slate-50 hover:text-primary transition-colors">Overview</a>
-        <a href="#about" onclick="toggleMobileMenu()" class="py-2 px-3 rounded-lg hover:bg-slate-50 hover:text-primary transition-colors">About Us &amp; Prayas Academy</a>
-        <a href="#offerings" onclick="toggleMobileMenu()" class="py-2 px-3 rounded-lg hover:bg-slate-50 hover:text-primary transition-colors">Capabilities</a>
-        <a href="#packaging-focus" onclick="toggleMobileMenu()" class="py-2 px-3 rounded-lg bg-blue-50/70 text-primary transition-colors">Packaging Solutions</a>
-        <a href="#highlights" onclick="toggleMobileMenu()" class="py-2 px-3 rounded-lg hover:bg-slate-50 hover:text-primary transition-colors">Key Highlights</a>
-        <a href="#video-showcase" onclick="toggleMobileMenu()" class="py-2 px-3 rounded-lg hover:bg-slate-50 hover:text-primary transition-colors">Watch Video</a>
-        <a href="#case-studies" onclick="toggleMobileMenu()" class="py-2 px-3 rounded-lg hover:bg-slate-50 hover:text-primary transition-colors">Case Studies</a>
-        <a href="#testimonials" onclick="toggleMobileMenu()" class="py-2 px-3 rounded-lg hover:bg-slate-50 hover:text-primary transition-colors">Client Testimonials</a>
-        <a href="#discuss-project" onclick="toggleMobileMenu()" class="py-2 px-3 rounded-lg hover:bg-slate-50 hover:text-primary transition-colors">Contact Us</a>
-      </div>
     </div>
   </header>
 
@@ -1757,19 +1725,6 @@
        12. INTERACTIVE JAVASCRIPT LOGIC
        ========================================================================= -->
   <script>
-    // Mobile navigation toggle
-    function toggleMobileMenu() {
-      const nav = document.getElementById('mobile-nav');
-      const icon = document.getElementById('mobile-menu-icon');
-      if (nav.classList.contains('hidden')) {
-        nav.classList.remove('hidden');
-        icon.textContent = 'close';
-      } else {
-        nav.classList.add('hidden');
-        icon.textContent = 'menu';
-      }
-    }
-
     // Expandable / Collapsible Case Studies Toggle (Read More / Read Less)
     function toggleCaseStudy(id) {
       const details = document.getElementById(id + '-details');
