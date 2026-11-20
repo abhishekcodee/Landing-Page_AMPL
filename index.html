@@ -1356,15 +1356,24 @@
             Facility &amp; Inquiries Desk
           </div>
           <div class="space-y-3 text-slate-300">
-            <!-- Facility Address -->
-            <div class="flex items-start gap-2.5">
-              <span class="material-symbols-outlined text-[18px] text-sky-400 flex-shrink-0 mt-0.5">location_on</span>
-              <span class="text-slate-300 leading-snug">
-                R-601/1, TTC Industrial Area, Thane-Belapur Road, Rabale MIDC,<br class="hidden sm:inline" /> Navi
-                Mumbai - 400701,
-                Maharashtra, India
-              </span>
-            </div>
+            <!-- Facility Address (Clickable for Google Maps Directions) -->
+            <a href="https://maps.google.com/?q=Absolute+Motion+Private+Limited,+R-601/1,+TTC+Industrial+Area,+Thane-Belapur+Road,+Rabale+MIDC,+Navi+Mumbai+-+400701"
+              target="_blank" rel="noopener noreferrer"
+              class="flex items-start gap-2.5 hover:text-white transition-colors group"
+              title="Open Google Maps for Directions">
+              <span class="material-symbols-outlined text-[18px] text-sky-400 group-hover:text-sky-300 flex-shrink-0 mt-0.5 transition-colors">location_on</span>
+              <div class="leading-snug">
+                <span class="text-slate-300 group-hover:text-white transition-colors">
+                  R-601/1, TTC Industrial Area, Thane-Belapur Road, Rabale MIDC,<br class="hidden sm:inline" /> Navi
+                  Mumbai - 400701,
+                  Maharashtra, India
+                </span>
+                <span class="flex items-center gap-1 text-[10px] text-sky-400 group-hover:text-sky-300 font-semibold mt-0.5 transition-colors">
+                  <span>Get Directions on Google Maps</span>
+                  <span class="material-symbols-outlined text-[12px]">open_in_new</span>
+                </span>
+              </div>
+            </a>
 
             <!-- Direct Contact (Clickable via tel:) -->
             <a href="tel:+919821828711" class="flex items-center gap-2.5 hover:text-white transition-colors group">
