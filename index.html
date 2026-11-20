@@ -966,114 +966,155 @@
   </main>
 
   <!-- =========================================================================
-       9. CLIENT TESTIMONIALS SECTION
-       Clean, attractive cards communicating trust and engineering credibility
+       8. CLIENT TESTIMONIALS SECTION (LIVE CYCLE CAROUSEL FORMAT)
+       Auto-cycling interactive slider with controls, indicators, and pause-on-hover
        ========================================================================= -->
-  <section id="testimonials" class="w-full bg-slate-50 py-12 sm:py-20 border-b border-slate-200/90 relative">
+  <section id="testimonials" class="w-full bg-slate-50 py-12 sm:py-20 border-b border-slate-200/90 relative overflow-hidden">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12">
 
-      <div class="max-w-3xl mb-8 sm:mb-12">
-        <div
-          class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-100/70 border border-blue-200 text-primary font-brand text-[11px] sm:text-xs font-bold uppercase tracking-widest mb-3">
-          <span class="material-symbols-outlined text-[14px]">reviews</span>
-          <span>Client Testimonials &amp; Trust</span>
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 sm:mb-12 gap-4">
+        <div class="max-w-2xl">
+          <div
+            class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-100/70 border border-blue-200 text-primary font-brand text-[11px] sm:text-xs font-bold uppercase tracking-widest mb-3">
+            <span class="material-symbols-outlined text-[14px]">reviews</span>
+            <span>Client Testimonials &amp; Trust</span>
+          </div>
+          <h2 class="font-brand text-2xl sm:text-3xl lg:text-4xl font-bold text-slate-900 tracking-tight leading-tight">
+            What Industrial Engineering Leaders Say
+          </h2>
+          <p class="font-body text-xs sm:text-base text-slate-600 leading-relaxed mt-2">
+            Verified feedback from manufacturing heads, plant managers, and packaging machinery builders who rely on
+            Absolute Motion.
+          </p>
         </div>
-        <h2 class="font-brand text-2xl sm:text-3xl lg:text-4xl font-bold text-slate-900 tracking-tight leading-tight">
-          What Industrial Engineering Leaders Say
-        </h2>
-        <p class="font-body text-xs sm:text-base text-slate-600 leading-relaxed mt-2">
-          Verified feedback from manufacturing heads, plant managers, and packaging machinery builders who rely on
-          Absolute Motion.
-        </p>
+
+        <!-- Carousel Previous / Next Controls -->
+        <div class="flex items-center gap-2 self-start md:self-auto">
+          <button type="button" onclick="prevTestimonial()" aria-label="Previous Testimonial"
+            class="w-10 h-10 rounded-full bg-white border border-slate-300 text-slate-700 hover:text-primary hover:border-primary shadow-sm flex items-center justify-center transition-all hover:scale-105 active:scale-95">
+            <span class="material-symbols-outlined text-[20px]">chevron_left</span>
+          </button>
+          <button type="button" onclick="nextTestimonial()" aria-label="Next Testimonial"
+            class="w-10 h-10 rounded-full bg-white border border-slate-300 text-slate-700 hover:text-primary hover:border-primary shadow-sm flex items-center justify-center transition-all hover:scale-105 active:scale-95">
+            <span class="material-symbols-outlined text-[20px]">chevron_right</span>
+          </button>
+        </div>
       </div>
 
-      <!-- Testimonial Cards Grid -->
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-
-        <!-- Testimonial 1 -->
-        <div class="bg-white p-6 sm:p-7 rounded-2xl border border-slate-200 shadow-sm flex flex-col justify-between">
-          <div>
-            <div class="flex items-center gap-1 text-amber-500 mb-3">
-              <span class="material-symbols-outlined text-[18px]">star</span>
-              <span class="material-symbols-outlined text-[18px]">star</span>
-              <span class="material-symbols-outlined text-[18px]">star</span>
-              <span class="material-symbols-outlined text-[18px]">star</span>
-              <span class="material-symbols-outlined text-[18px]">star</span>
-            </div>
-            <p class="font-body text-xs sm:text-sm text-slate-700 leading-relaxed italic mb-5">
-              "Absolute Motion delivered our 4-machine vision-guided kit assembly line in just 30 days. Their Cognex
-              integration cut our scrap rate by 75% and completely eliminated manual touchpoint contamination. Complete
-              capital payback was achieved in under 6 months."
-            </p>
-          </div>
-          <div class="pt-4 border-t border-slate-100 flex items-center gap-3">
-            <div
-              class="w-10 h-10 rounded-full bg-primary/10 text-primary font-brand font-bold text-xs flex items-center justify-center">
-              VP
-            </div>
+      <!-- Live Cycle Testimonials Card Container -->
+      <div class="relative max-w-4xl mx-auto" onmouseenter="pauseTestimonialCycle()" onmouseleave="resumeTestimonialCycle()">
+        
+        <div class="relative overflow-hidden rounded-2xl sm:rounded-3xl bg-white border border-slate-200 shadow-lg p-6 sm:p-10 min-h-[300px] sm:min-h-[250px] flex flex-col justify-between">
+          
+          <!-- Slide 1 -->
+          <div class="testimonial-slide transition-opacity duration-500 ease-in-out opacity-100 flex flex-col justify-between h-full" data-index="0">
             <div>
-              <div class="font-brand text-sm font-bold text-slate-900">VP of Manufacturing Operations</div>
-              <div class="text-[11px] text-slate-500 font-body">Leading Diagnostic &amp; Healthcare Kit Manufacturer
+              <div class="flex items-center justify-between mb-4">
+                <div class="flex items-center gap-1 text-amber-500">
+                  <span class="material-symbols-outlined text-[20px]">star</span>
+                  <span class="material-symbols-outlined text-[20px]">star</span>
+                  <span class="material-symbols-outlined text-[20px]">star</span>
+                  <span class="material-symbols-outlined text-[20px]">star</span>
+                  <span class="material-symbols-outlined text-[20px]">star</span>
+                </div>
+                <span class="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-blue-50 text-primary font-brand text-[11px] font-bold">
+                  Verified Client
+                </span>
+              </div>
+              <p class="font-body text-sm sm:text-base md:text-lg text-slate-800 leading-relaxed italic mb-6">
+                "Absolute Motion delivered our 4-machine vision-guided kit assembly line in just 30 days. Their Cognex
+                integration cut our scrap rate by 75% and completely eliminated manual touchpoint contamination. Complete
+                capital payback was achieved in under 6 months."
+              </p>
+            </div>
+            <div class="pt-4 border-t border-slate-100 flex items-center gap-3.5">
+              <div
+                class="w-11 h-11 rounded-full bg-primary/10 text-primary font-brand font-bold text-sm flex items-center justify-center flex-shrink-0">
+                VP
+              </div>
+              <div>
+                <div class="font-brand text-sm sm:text-base font-bold text-slate-900">VP of Manufacturing Operations</div>
+                <div class="text-xs text-slate-500 font-body">Leading Diagnostic &amp; Healthcare Kit Manufacturer</div>
               </div>
             </div>
           </div>
-        </div>
 
-        <!-- Testimonial 2 -->
-        <div class="bg-white p-6 sm:p-7 rounded-2xl border border-slate-200 shadow-sm flex flex-col justify-between">
-          <div>
-            <div class="flex items-center gap-1 text-amber-500 mb-3">
-              <span class="material-symbols-outlined text-[18px]">star</span>
-              <span class="material-symbols-outlined text-[18px]">star</span>
-              <span class="material-symbols-outlined text-[18px]">star</span>
-              <span class="material-symbols-outlined text-[18px]">star</span>
-              <span class="material-symbols-outlined text-[18px]">star</span>
-            </div>
-            <p class="font-body text-xs sm:text-sm text-slate-700 leading-relaxed italic mb-5">
-              "Our spray bottle packaging suffered persistent straw bending and alignment bottlenecks. Absolute Motion’s
-              12-axis servo capping cell solved the dip-tube guides flawlessly. We now run at 36 BPM with 90% higher cap
-              placement precision."
-            </p>
-          </div>
-          <div class="pt-4 border-t border-slate-100 flex items-center gap-3">
-            <div
-              class="w-10 h-10 rounded-full bg-primary/10 text-primary font-brand font-bold text-xs flex items-center justify-center">
-              CTO
-            </div>
+          <!-- Slide 2 -->
+          <div class="testimonial-slide hidden transition-opacity duration-500 ease-in-out opacity-0 flex flex-col justify-between h-full" data-index="1">
             <div>
-              <div class="font-brand text-sm font-bold text-slate-900">Chief Technology Officer</div>
-              <div class="text-[11px] text-slate-500 font-body">Personal Care &amp; Specialty Cosmetics Packaging</div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Testimonial 3 -->
-        <div class="bg-white p-6 sm:p-7 rounded-2xl border border-slate-200 shadow-sm flex flex-col justify-between">
-          <div>
-            <div class="flex items-center gap-1 text-amber-500 mb-3">
-              <span class="material-symbols-outlined text-[18px]">star</span>
-              <span class="material-symbols-outlined text-[18px]">star</span>
-              <span class="material-symbols-outlined text-[18px]">star</span>
-              <span class="material-symbols-outlined text-[18px]">star</span>
-              <span class="material-symbols-outlined text-[18px]">star</span>
-            </div>
-            <p class="font-body text-xs sm:text-sm text-slate-700 leading-relaxed italic mb-5">
-              "Their active/standby redundant PLC architecture and Zenon SCADA implementation ensured continuous
-              zero-downtime batch processing across our plant. The recipe management and QR verification system set an
-              industry benchmark for traceability."
-            </p>
-          </div>
-          <div class="pt-4 border-t border-slate-100 flex items-center gap-3">
-            <div
-              class="w-10 h-10 rounded-full bg-primary/10 text-primary font-brand font-bold text-xs flex items-center justify-center">
-              GM
-            </div>
-            <div>
-              <div class="font-brand text-sm font-bold text-slate-900">General Manager – Engineering &amp; Projects
+              <div class="flex items-center justify-between mb-4">
+                <div class="flex items-center gap-1 text-amber-500">
+                  <span class="material-symbols-outlined text-[20px]">star</span>
+                  <span class="material-symbols-outlined text-[20px]">star</span>
+                  <span class="material-symbols-outlined text-[20px]">star</span>
+                  <span class="material-symbols-outlined text-[20px]">star</span>
+                  <span class="material-symbols-outlined text-[20px]">star</span>
+                </div>
+                <span class="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-blue-50 text-primary font-brand text-[11px] font-bold">
+                  Verified Client
+                </span>
               </div>
-              <div class="text-[11px] text-slate-500 font-body">Industrial Chemical &amp; Adhesives Plant (Wada)</div>
+              <p class="font-body text-sm sm:text-base md:text-lg text-slate-800 leading-relaxed italic mb-6">
+                "Our spray bottle packaging suffered persistent straw bending and alignment bottlenecks. Absolute Motion’s
+                12-axis servo capping cell solved the dip-tube guides flawlessly. We now run at 36 BPM with 90% higher cap
+                placement precision."
+              </p>
+            </div>
+            <div class="pt-4 border-t border-slate-100 flex items-center gap-3.5">
+              <div
+                class="w-11 h-11 rounded-full bg-primary/10 text-primary font-brand font-bold text-sm flex items-center justify-center flex-shrink-0">
+                CTO
+              </div>
+              <div>
+                <div class="font-brand text-sm sm:text-base font-bold text-slate-900">Chief Technology Officer</div>
+                <div class="text-xs text-slate-500 font-body">Personal Care &amp; Specialty Cosmetics Packaging</div>
+              </div>
             </div>
           </div>
+
+          <!-- Slide 3 -->
+          <div class="testimonial-slide hidden transition-opacity duration-500 ease-in-out opacity-0 flex flex-col justify-between h-full" data-index="2">
+            <div>
+              <div class="flex items-center justify-between mb-4">
+                <div class="flex items-center gap-1 text-amber-500">
+                  <span class="material-symbols-outlined text-[20px]">star</span>
+                  <span class="material-symbols-outlined text-[20px]">star</span>
+                  <span class="material-symbols-outlined text-[20px]">star</span>
+                  <span class="material-symbols-outlined text-[20px]">star</span>
+                  <span class="material-symbols-outlined text-[20px]">star</span>
+                </div>
+                <span class="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-blue-50 text-primary font-brand text-[11px] font-bold">
+                  Verified Client
+                </span>
+              </div>
+              <p class="font-body text-sm sm:text-base md:text-lg text-slate-800 leading-relaxed italic mb-6">
+                "Their active/standby redundant PLC architecture and Zenon SCADA implementation ensured continuous
+                zero-downtime batch processing across our plant. The recipe management and QR verification system set an
+                industry benchmark for traceability."
+              </p>
+            </div>
+            <div class="pt-4 border-t border-slate-100 flex items-center gap-3.5">
+              <div
+                class="w-11 h-11 rounded-full bg-primary/10 text-primary font-brand font-bold text-sm flex items-center justify-center flex-shrink-0">
+                GM
+              </div>
+              <div>
+                <div class="font-brand text-sm sm:text-base font-bold text-slate-900">General Manager – Engineering &amp; Projects</div>
+                <div class="text-xs text-slate-500 font-body">Industrial Chemical &amp; Adhesives Plant (Wada)</div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Dot Pagination Indicators -->
+        <div class="flex items-center justify-center gap-2.5 mt-5">
+          <button type="button" onclick="goToTestimonial(0)" aria-label="Go to slide 1"
+            class="testimonial-dot w-8 h-2.5 rounded-full bg-primary transition-all"></button>
+          <button type="button" onclick="goToTestimonial(1)" aria-label="Go to slide 2"
+            class="testimonial-dot w-2.5 h-2.5 rounded-full bg-slate-300 hover:bg-slate-400 transition-all"></button>
+          <button type="button" onclick="goToTestimonial(2)" aria-label="Go to slide 3"
+            class="testimonial-dot w-2.5 h-2.5 rounded-full bg-slate-300 hover:bg-slate-400 transition-all"></button>
         </div>
 
       </div>
@@ -1453,6 +1494,77 @@
        12. INTERACTIVE JAVASCRIPT LOGIC
        ========================================================================= -->
   <script>
+    // Live Cycle Testimonials Carousel Logic
+    let currentTestimonial = 0;
+    let testimonialTimer = null;
+
+    function getTestimonialElements() {
+      return {
+        slides: document.querySelectorAll('.testimonial-slide'),
+        dots: document.querySelectorAll('.testimonial-dot')
+      };
+    }
+
+    function showTestimonial(index) {
+      const { slides, dots } = getTestimonialElements();
+      if (!slides.length) return;
+      currentTestimonial = (index + slides.length) % slides.length;
+
+      slides.forEach((slide, i) => {
+        if (i === currentTestimonial) {
+          slide.classList.remove('hidden');
+          setTimeout(() => {
+            slide.classList.remove('opacity-0');
+            slide.classList.add('opacity-100');
+          }, 20);
+        } else {
+          slide.classList.add('hidden', 'opacity-0');
+          slide.classList.remove('opacity-100');
+        }
+      });
+
+      dots.forEach((dot, i) => {
+        if (i === currentTestimonial) {
+          dot.classList.remove('w-2.5', 'bg-slate-300');
+          dot.classList.add('w-8', 'bg-primary');
+        } else {
+          dot.classList.remove('w-8', 'bg-primary');
+          dot.classList.add('w-2.5', 'bg-slate-300');
+        }
+      });
+    }
+
+    function nextTestimonial() {
+      showTestimonial(currentTestimonial + 1);
+    }
+
+    function prevTestimonial() {
+      showTestimonial(currentTestimonial - 1);
+    }
+
+    function goToTestimonial(i) {
+      showTestimonial(i);
+    }
+
+    function startTestimonialCycle() {
+      if (testimonialTimer) clearInterval(testimonialTimer);
+      testimonialTimer = setInterval(nextTestimonial, 5000);
+    }
+
+    function pauseTestimonialCycle() {
+      if (testimonialTimer) clearInterval(testimonialTimer);
+    }
+
+    function resumeTestimonialCycle() {
+      startTestimonialCycle();
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', startTestimonialCycle);
+    } else {
+      startTestimonialCycle();
+    }
+
     // Expandable / Collapsible Case Studies Toggle (Read More / Read Less)
     function toggleCaseStudy(id) {
       const details = document.getElementById(id + '-details');
