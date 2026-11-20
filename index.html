@@ -4,12 +4,12 @@
 <head>
   <meta charset="utf-8" />
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover" name="viewport" />
-  <title>Absolute Motion | Engineering Intelligence. Transforming Industrial Performance.</title>
+  <title>Absolute Motion | Industrial Automation, Control Panels &amp; Packaging Line Solutions</title>
   <meta name="description"
-    content="Discover how Absolute Motion combines advanced automation, robotics and intelligent control systems to improve manufacturing performance, operational efficiency and production reliability.">
+    content="Absolute Motion engineers high-speed industrial automation, custom control panels, and turnkey packaging lines for packaging and manufacturing companies across India.">
   <link rel="icon" type="image/png" href="assets/images/logo.png">
 
-  <!-- Official Fonts -->
+  <!-- Official Google Fonts -->
   <link href="https://fonts.googleapis.com" rel="preconnect" />
   <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
   <link
@@ -21,9 +21,7 @@
 
   <style>
     @layer base {
-
-      html,
-      body {
+      html, body {
         width: 100%;
         margin: 0;
         padding: 0;
@@ -35,12 +33,39 @@
       }
     }
 
-    /* Technical engineering grid pattern */
+    /* Technical engineering grid background */
     .engineering-grid {
       background-image:
         linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
         linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
       background-size: 40px 40px;
+    }
+
+    /* Subtle dot grid for cards */
+    .dot-grid {
+      background-image: radial-gradient(rgba(46, 54, 147, 0.08) 1px, transparent 1px);
+      background-size: 20px 20px;
+    }
+
+    /* Seamless Infinite Logo Marquee */
+    @keyframes marquee {
+      0% { transform: translateX(0%); }
+      100% { transform: translateX(-50%); }
+    }
+
+    .marquee-track {
+      display: flex;
+      width: max-content;
+      animation: marquee 30s linear infinite;
+    }
+
+    .marquee-track:hover {
+      animation-play-state: paused;
+    }
+
+    /* Smooth transitions for expandable cards */
+    .expand-content {
+      transition: all 0.35s ease-in-out;
     }
   </style>
 
@@ -79,15 +104,12 @@
   </script>
 </head>
 
-<body
-  class="bg-white font-body text-slate-800 antialiased selection:bg-primary selection:text-white flex flex-col min-h-screen">
+<body class="bg-white font-body text-slate-800 antialiased selection:bg-primary selection:text-white flex flex-col min-h-screen">
 
   <!-- =========================================================================
-       1. LANDING PAGE'S OWN DEDICATED HEADER
-       Clean, streamlined, brand-authentic, with direct CTA
+       1. GLOBAL CORPORATE HEADER & NAVIGATION
        ========================================================================= -->
-  <header
-    class="sticky top-0 w-full z-50 bg-white/95 backdrop-blur-xl border-b border-slate-200/80 shadow-[0_2px_12px_rgba(0,0,0,0.03)] transition-all">
+  <header class="sticky top-0 w-full z-50 bg-white/95 backdrop-blur-xl border-b border-slate-200/80 shadow-[0_2px_12px_rgba(0,0,0,0.03)] transition-all">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 h-16 sm:h-20 flex items-center justify-between gap-3 sm:gap-6">
 
       <!-- Brand Logo -->
@@ -99,157 +121,370 @@
         </div>
       </a>
 
-      <!-- Navigation (Desktop) -->
-      <nav
-        class="hidden md:flex items-center gap-6 lg:gap-8 font-brand text-sm font-semibold uppercase tracking-wider text-slate-700">
+      <!-- Desktop Navigation -->
+      <nav class="hidden lg:flex items-center gap-6 xl:gap-7 font-brand text-xs xl:text-sm font-semibold uppercase tracking-wider text-slate-700">
         <a href="#hero" class="hover:text-primary transition-colors py-1">Overview</a>
-        <a href="#case-study" class="hover:text-primary transition-colors py-1">Case Study 1</a>
-        <a href="#case-study-2" class="hover:text-primary transition-colors py-1">Case Study 2</a>
-        <a href="#case-study-3" class="hover:text-primary transition-colors py-1">Case Study 3</a>
-        <a href="#discuss-project" class="hover:text-primary transition-colors py-1">Contact Us</a>
+        <a href="#about" class="hover:text-primary transition-colors py-1">About Us</a>
+        <a href="#offerings" class="hover:text-primary transition-colors py-1">Capabilities</a>
+        <a href="#packaging-focus" class="hover:text-primary transition-colors py-1 text-primary">Packaging Focus</a>
+        <a href="#highlights" class="hover:text-primary transition-colors py-1">Highlights</a>
+        <a href="#video-showcase" class="hover:text-primary transition-colors py-1">Video</a>
+        <a href="#case-studies" class="hover:text-primary transition-colors py-1">Case Studies</a>
+        <a href="#testimonials" class="hover:text-primary transition-colors py-1">Testimonials</a>
       </nav>
 
-      <!-- Action Button -->
+      <!-- Action Button & Mobile Menu Toggle -->
       <div class="flex items-center gap-2 sm:gap-3">
         <a href="#discuss-project"
           class="inline-flex items-center justify-center gap-1.5 sm:gap-2 h-9 sm:h-11 px-3.5 sm:px-6 rounded-full bg-primary text-white font-brand text-[11px] sm:text-sm font-semibold uppercase tracking-wider shadow-sm hover:bg-primary-hover hover:shadow-card hover:-translate-y-0.5 active:scale-[0.99] transition-all whitespace-nowrap">
           <span>Discuss Your Project</span>
           <span class="material-symbols-outlined text-[15px] sm:text-[18px]">arrow_forward</span>
         </a>
+
+        <!-- Mobile Menu Toggle Button -->
+        <button type="button" onclick="toggleMobileMenu()" aria-label="Toggle Navigation Menu"
+          class="lg:hidden inline-flex items-center justify-center w-9 h-9 rounded-lg border border-slate-200 text-slate-700 hover:bg-slate-100 transition-colors">
+          <span id="mobile-menu-icon" class="material-symbols-outlined text-[22px]">menu</span>
+        </button>
       </div>
 
+    </div>
+
+    <!-- Mobile Dropdown Navigation -->
+    <div id="mobile-nav" class="hidden lg:hidden border-t border-slate-200 bg-white/98 backdrop-blur-xl px-4 py-3 shadow-lg">
+      <div class="flex flex-col space-y-2 font-brand text-xs font-semibold uppercase tracking-wider text-slate-700">
+        <a href="#hero" onclick="toggleMobileMenu()" class="py-2 px-3 rounded-lg hover:bg-slate-50 hover:text-primary transition-colors">Overview</a>
+        <a href="#about" onclick="toggleMobileMenu()" class="py-2 px-3 rounded-lg hover:bg-slate-50 hover:text-primary transition-colors">About Us &amp; Prayas Academy</a>
+        <a href="#offerings" onclick="toggleMobileMenu()" class="py-2 px-3 rounded-lg hover:bg-slate-50 hover:text-primary transition-colors">Capabilities</a>
+        <a href="#packaging-focus" onclick="toggleMobileMenu()" class="py-2 px-3 rounded-lg bg-blue-50/70 text-primary transition-colors">Packaging Solutions</a>
+        <a href="#highlights" onclick="toggleMobileMenu()" class="py-2 px-3 rounded-lg hover:bg-slate-50 hover:text-primary transition-colors">Key Highlights</a>
+        <a href="#video-showcase" onclick="toggleMobileMenu()" class="py-2 px-3 rounded-lg hover:bg-slate-50 hover:text-primary transition-colors">Watch Video</a>
+        <a href="#case-studies" onclick="toggleMobileMenu()" class="py-2 px-3 rounded-lg hover:bg-slate-50 hover:text-primary transition-colors">Case Studies</a>
+        <a href="#testimonials" onclick="toggleMobileMenu()" class="py-2 px-3 rounded-lg hover:bg-slate-50 hover:text-primary transition-colors">Client Testimonials</a>
+        <a href="#discuss-project" onclick="toggleMobileMenu()" class="py-2 px-3 rounded-lg hover:bg-slate-50 hover:text-primary transition-colors">Contact Us</a>
+      </div>
     </div>
   </header>
 
   <!-- =========================================================================
-       2. HERO SECTION (FULL WIDTH, MARGIN LEFT & RIGHT 0px)
-       Headline: "Engineering Intelligence. Transforming Industrial Performance."
-       Description: "Discover how Absolute Motion combines advanced automation, robotics and intelligent control systems to improve manufacturing performance, operational efficiency and production reliability."
-       CTA Button: "Discuss Your Project" -> /discuss-project
+       2. CONVERSION-FOCUSED HERO SECTION
+       - Main heading strictly ONE line on desktop
+       - Subheading strictly TWO lines maximum
+       - Special focus on Packaging Companies & Core Industrial Capabilities
+       - Case Study is completely separated from the hero page
        ========================================================================= -->
-  <section id="hero" class="relative w-full overflow-hidden bg-navy-deep text-white shadow-2xl"
-    style="margin-left: 0px; margin-right: 0px;">
+  <section id="hero" class="relative w-full overflow-hidden bg-navy-deep text-white shadow-2xl">
 
-    <!-- Authentic Industrial Background with Gradient Scrim -->
+    <!-- Industrial Background with Gradient Scrim -->
     <div
-      class="absolute inset-0 w-full h-full bg-cover bg-center transition-transform duration-1000 scale-100 hover:scale-105"
-      style="background-image: linear-gradient(135deg, rgba(10,15,29,0.95) 0%, rgba(46,54,147,0.85) 55%, rgba(10,15,29,0.96) 100%), url('assets/images/hero-bottling.jpg');">
+      class="absolute inset-0 w-full h-full bg-cover bg-center transition-transform duration-1000 scale-100"
+      style="background-image: linear-gradient(135deg, rgba(10,15,29,0.96) 0%, rgba(46,54,147,0.85) 55%, rgba(10,15,29,0.97) 100%), url('assets/images/hero-bottling.jpg');">
     </div>
 
     <!-- Technical Grid Accent -->
     <div class="absolute inset-0 w-full h-full engineering-grid pointer-events-none opacity-40"></div>
 
     <!-- Radial Engineering Glow -->
-    <div class="absolute -top-32 -right-32 w-[500px] h-[500px] bg-primary/40 rounded-full blur-3xl pointer-events-none">
+    <div class="absolute -top-32 -right-32 w-[520px] h-[520px] bg-primary/40 rounded-full blur-3xl pointer-events-none"></div>
+
+    <!-- Centered Content Wrapper -->
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 py-14 sm:py-20 lg:py-28 flex flex-col gap-5 sm:gap-6">
+
+      <!-- Technical Eyebrow -->
+      <div class="flex items-center gap-2.5 self-start bg-white/10 backdrop-blur-md px-3 sm:px-3.5 py-1.5 rounded-full border border-white/20">
+        <span class="relative flex h-2.5 w-2.5">
+          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-status-active opacity-75"></span>
+          <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-status-active"></span>
+        </span>
+        <span class="font-brand text-[11px] sm:text-xs font-semibold uppercase tracking-wider text-slate-200">
+          Industrial Automation &amp; Control Systems • Rabale MIDC
+        </span>
+      </div>
+
+      <!-- Main Headline: Strictly ONE line on desktop -->
+      <h1
+        class="font-brand text-2xl sm:text-3xl md:text-4xl lg:text-[40px] xl:text-[46px] font-bold text-white tracking-tight leading-tight lg:whitespace-nowrap">
+        Industrial Automation &amp; Control Systems for Modern Packaging
+      </h1>
+
+      <!-- Subheading: Strictly TWO lines maximum on desktop -->
+      <p class="font-body text-sm sm:text-base md:text-lg lg:text-xl text-slate-200/90 leading-relaxed font-normal max-w-3xl">
+        We engineer high-speed automation, custom control panels, and synchronized robotic systems that empower packaging leaders to maximize throughput, eliminate defects, and operate 24/7.
+      </p>
+
+      <!-- CTA Button Group -->
+      <div class="pt-1 flex flex-row items-center gap-2.5 sm:gap-4 max-w-full">
+        <a class="flex-1 sm:flex-none inline-flex items-center justify-center gap-1.5 sm:gap-2.5 px-4 sm:px-8 h-11 sm:h-13 bg-primary text-white rounded-full font-brand text-xs sm:text-sm font-bold uppercase tracking-wider border border-white/25 shadow-lg hover:bg-primary-hover hover:shadow-glow hover:-translate-y-0.5 active:scale-[0.99] transition-all text-center whitespace-nowrap"
+          href="#discuss-project">
+          <span>Discuss Your Project</span>
+          <span class="material-symbols-outlined text-[16px] sm:text-[18px]">arrow_forward</span>
+        </a>
+        <a href="#offerings"
+          class="flex-1 sm:flex-none inline-flex items-center justify-center gap-1.5 sm:gap-2 px-3 sm:px-6 h-11 sm:h-13 rounded-full border border-white/25 text-white font-brand text-xs sm:text-sm font-semibold uppercase tracking-wider hover:bg-white/10 hover:border-white/40 transition-colors text-center whitespace-nowrap">
+          <span>Explore Capabilities</span>
+          <span class="material-symbols-outlined text-[16px]">expand_more</span>
+        </a>
+      </div>
+
+      <!-- Core Offerings Quick Indicators -->
+      <div class="pt-1 flex flex-wrap items-center gap-3 sm:gap-6 text-slate-300 font-brand text-xs sm:text-sm tracking-wide">
+        <span class="flex items-center gap-1.5">
+          <span class="material-symbols-outlined text-[16px] text-sky-400">precision_manufacturing</span>
+          Packaging Line Automation
+        </span>
+        <span class="flex items-center gap-1.5">
+          <span class="material-symbols-outlined text-[16px] text-sky-400">electrical_services</span>
+          Control Panel Manufacturing
+        </span>
+        <span class="flex items-center gap-1.5">
+          <span class="material-symbols-outlined text-[16px] text-sky-400">developer_board</span>
+          Industrial Control Systems
+        </span>
+        <span class="flex items-center gap-1.5">
+          <span class="material-symbols-outlined text-[16px] text-sky-400">speed</span>
+          Turnkey Speeds up to 500 BPM
+        </span>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       3. TRUSTED BY SECTION – CONTINUOUS LOGO SLIDER (INFINITE MARQUEE)
+       Smooth horizontal auto-scroll without user interaction, desktop & mobile
+       ========================================================================= -->
+  <section class="w-full bg-slate-900 border-y border-slate-800 py-6 sm:py-8 overflow-hidden relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 mb-4 text-center">
+      <p class="font-brand text-[11px] sm:text-xs font-bold uppercase tracking-widest text-slate-400">
+        Trusted By Industry Leaders &amp; Platform Technology Partners
+      </p>
     </div>
 
-    <!-- Centered Content Wrapper (Fluid Desktop & Mobile) -->
-    <div
-      class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 py-12 sm:py-24 lg:py-28 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8 lg:gap-12">
+    <!-- Gradient Edge Masks for Seamless Carousel Visual -->
+    <div class="absolute left-0 inset-y-0 w-16 sm:w-28 bg-gradient-to-r from-slate-900 to-transparent z-10 pointer-events-none"></div>
+    <div class="absolute right-0 inset-y-0 w-16 sm:w-28 bg-gradient-to-l from-slate-900 to-transparent z-10 pointer-events-none"></div>
 
-      <!-- Left Column: Core Value Proposition & Actions -->
-      <div class="max-w-2xl flex flex-col gap-5 sm:gap-6">
-
-        <!-- Subtle Technical Eyebrow -->
-        <div
-          class="flex items-center gap-2.5 self-start bg-white/10 backdrop-blur-md px-3 sm:px-3.5 py-1.5 rounded-full border border-white/20">
-          <span class="relative flex h-2.5 w-2.5">
-            <span
-              class="animate-ping absolute inline-flex h-full w-full rounded-full bg-status-active opacity-75"></span>
-            <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-status-active"></span>
-          </span>
-          <span
-            class="font-brand text-[11px] sm:text-xs font-semibold uppercase tracking-wider text-slate-200">Industrial
-            Automation &amp; Robotics</span>
+    <!-- Infinite Scrolling Marquee Track -->
+    <div class="overflow-hidden w-full flex">
+      <div class="marquee-track flex items-center gap-8 sm:gap-14 px-4">
+        
+        <!-- SET 1 -->
+        <div class="flex items-center gap-2.5 text-slate-300 hover:text-white transition-colors cursor-default whitespace-nowrap">
+          <span class="material-symbols-outlined text-[20px] text-sky-400">factory</span>
+          <span class="font-brand text-sm sm:text-base font-bold tracking-wider">PIDILITE INDUSTRIES</span>
+        </div>
+        <div class="flex items-center gap-2.5 text-slate-300 hover:text-white transition-colors cursor-default whitespace-nowrap">
+          <span class="material-symbols-outlined text-[20px] text-sky-400">memory</span>
+          <span class="font-brand text-sm sm:text-base font-bold tracking-wider">SIEMENS</span>
+        </div>
+        <div class="flex items-center gap-2.5 text-slate-300 hover:text-white transition-colors cursor-default whitespace-nowrap">
+          <span class="material-symbols-outlined text-[20px] text-sky-400">settings_input_component</span>
+          <span class="font-brand text-sm sm:text-base font-bold tracking-wider">ROCKWELL AUTOMATION</span>
+        </div>
+        <div class="flex items-center gap-2.5 text-slate-300 hover:text-white transition-colors cursor-default whitespace-nowrap">
+          <span class="material-symbols-outlined text-[20px] text-sky-400">sync</span>
+          <span class="font-brand text-sm sm:text-base font-bold tracking-wider">OMRON AUTOMATION</span>
+        </div>
+        <div class="flex items-center gap-2.5 text-slate-300 hover:text-white transition-colors cursor-default whitespace-nowrap">
+          <span class="material-symbols-outlined text-[20px] text-sky-400">bolt</span>
+          <span class="font-brand text-sm sm:text-base font-bold tracking-wider">SCHNEIDER ELECTRIC</span>
+        </div>
+        <div class="flex items-center gap-2.5 text-slate-300 hover:text-white transition-colors cursor-default whitespace-nowrap">
+          <span class="material-symbols-outlined text-[20px] text-sky-400">visibility</span>
+          <span class="font-brand text-sm sm:text-base font-bold tracking-wider">COGNEX VISION</span>
+        </div>
+        <div class="flex items-center gap-2.5 text-slate-300 hover:text-white transition-colors cursor-default whitespace-nowrap">
+          <span class="material-symbols-outlined text-[20px] text-sky-400">developer_board</span>
+          <span class="font-brand text-sm sm:text-base font-bold tracking-wider">WAGO</span>
+        </div>
+        <div class="flex items-center gap-2.5 text-slate-300 hover:text-white transition-colors cursor-default whitespace-nowrap">
+          <span class="material-symbols-outlined text-[20px] text-sky-400">monitor</span>
+          <span class="font-brand text-sm sm:text-base font-bold tracking-wider">EXOR INTERNATIONAL</span>
+        </div>
+        <div class="flex items-center gap-2.5 text-slate-300 hover:text-white transition-colors cursor-default whitespace-nowrap">
+          <span class="material-symbols-outlined text-[20px] text-sky-400">water_drop</span>
+          <span class="font-brand text-sm sm:text-base font-bold tracking-wider">WATERMASS SYSTEMS</span>
+        </div>
+        <div class="flex items-center gap-2.5 text-slate-300 hover:text-white transition-colors cursor-default whitespace-nowrap">
+          <span class="material-symbols-outlined text-[20px] text-sky-400">medication</span>
+          <span class="font-brand text-sm sm:text-base font-bold tracking-wider">UNITED BLISTERS</span>
         </div>
 
-        <!-- Headline -->
-        <h1
-          class="font-brand text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight tracking-tight text-balance">
-          Engineering Intelligence.<br />
-          <span class="bg-gradient-to-r from-white via-blue-100 to-sky-300 bg-clip-text text-transparent">
-            Transforming Industrial Performance.
-          </span>
-        </h1>
-
-        <!-- Description -->
-        <p class="font-body text-sm sm:text-base md:text-lg lg:text-xl text-slate-200/90 leading-relaxed font-normal">
-          Discover how Absolute Motion combines advanced automation, robotics and intelligent control systems to improve
-          manufacturing performance, operational efficiency and production reliability.
-        </p>
-
-        <!-- CTA Button Group (Inlined on Mobile and Desktop) -->
-        <div class="pt-2 flex flex-row items-center gap-2 sm:gap-4 max-w-full">
-          <a class="flex-1 sm:flex-none inline-flex items-center justify-center gap-1.5 sm:gap-2.5 px-3 sm:px-8 h-11 sm:h-14 bg-primary text-white rounded-full font-brand text-[11px] sm:text-base font-semibold uppercase tracking-wide sm:tracking-wider border border-white/25 shadow-lg hover:bg-primary-hover hover:shadow-glow hover:-translate-y-0.5 active:scale-[0.99] transition-all text-center whitespace-nowrap"
-            data-path="discuss-project" href="#discuss-project">
-            <span>Discuss Your Project</span>
-            <span class="material-symbols-outlined text-[15px] sm:text-[20px]">arrow_forward</span>
-          </a>
-          <a href="#case-study"
-            class="flex-1 sm:flex-none inline-flex items-center justify-center gap-1 sm:gap-2 px-2.5 sm:px-6 h-11 sm:h-14 rounded-full border border-white/25 text-white font-brand text-[11px] sm:text-base font-semibold uppercase tracking-wide sm:tracking-wider hover:bg-white/10 hover:border-white/40 transition-colors text-center whitespace-nowrap">
-            <span>View Case Study 1</span>
-            <span class="material-symbols-outlined text-[15px] sm:text-[18px]">expand_more</span>
-          </a>
+        <!-- SET 2 (Duplicate for Seamless Infinite Loop) -->
+        <div class="flex items-center gap-2.5 text-slate-300 hover:text-white transition-colors cursor-default whitespace-nowrap">
+          <span class="material-symbols-outlined text-[20px] text-sky-400">factory</span>
+          <span class="font-brand text-sm sm:text-base font-bold tracking-wider">PIDILITE INDUSTRIES</span>
+        </div>
+        <div class="flex items-center gap-2.5 text-slate-300 hover:text-white transition-colors cursor-default whitespace-nowrap">
+          <span class="material-symbols-outlined text-[20px] text-sky-400">memory</span>
+          <span class="font-brand text-sm sm:text-base font-bold tracking-wider">SIEMENS</span>
+        </div>
+        <div class="flex items-center gap-2.5 text-slate-300 hover:text-white transition-colors cursor-default whitespace-nowrap">
+          <span class="material-symbols-outlined text-[20px] text-sky-400">settings_input_component</span>
+          <span class="font-brand text-sm sm:text-base font-bold tracking-wider">ROCKWELL AUTOMATION</span>
+        </div>
+        <div class="flex items-center gap-2.5 text-slate-300 hover:text-white transition-colors cursor-default whitespace-nowrap">
+          <span class="material-symbols-outlined text-[20px] text-sky-400">sync</span>
+          <span class="font-brand text-sm sm:text-base font-bold tracking-wider">OMRON AUTOMATION</span>
+        </div>
+        <div class="flex items-center gap-2.5 text-slate-300 hover:text-white transition-colors cursor-default whitespace-nowrap">
+          <span class="material-symbols-outlined text-[20px] text-sky-400">bolt</span>
+          <span class="font-brand text-sm sm:text-base font-bold tracking-wider">SCHNEIDER ELECTRIC</span>
+        </div>
+        <div class="flex items-center gap-2.5 text-slate-300 hover:text-white transition-colors cursor-default whitespace-nowrap">
+          <span class="material-symbols-outlined text-[20px] text-sky-400">visibility</span>
+          <span class="font-brand text-sm sm:text-base font-bold tracking-wider">COGNEX VISION</span>
+        </div>
+        <div class="flex items-center gap-2.5 text-slate-300 hover:text-white transition-colors cursor-default whitespace-nowrap">
+          <span class="material-symbols-outlined text-[20px] text-sky-400">developer_board</span>
+          <span class="font-brand text-sm sm:text-base font-bold tracking-wider">WAGO</span>
+        </div>
+        <div class="flex items-center gap-2.5 text-slate-300 hover:text-white transition-colors cursor-default whitespace-nowrap">
+          <span class="material-symbols-outlined text-[20px] text-sky-400">monitor</span>
+          <span class="font-brand text-sm sm:text-base font-bold tracking-wider">EXOR INTERNATIONAL</span>
+        </div>
+        <div class="flex items-center gap-2.5 text-slate-300 hover:text-white transition-colors cursor-default whitespace-nowrap">
+          <span class="material-symbols-outlined text-[20px] text-sky-400">water_drop</span>
+          <span class="font-brand text-sm sm:text-base font-bold tracking-wider">WATERMASS SYSTEMS</span>
+        </div>
+        <div class="flex items-center gap-2.5 text-slate-300 hover:text-white transition-colors cursor-default whitespace-nowrap">
+          <span class="material-symbols-outlined text-[20px] text-sky-400">medication</span>
+          <span class="font-brand text-sm sm:text-base font-bold tracking-wider">UNITED BLISTERS</span>
         </div>
 
-        <!-- Operational Highlights -->
-        <div
-          class="pt-2 sm:pt-3 flex flex-wrap items-center gap-3.5 sm:gap-6 text-slate-300 font-brand text-xs sm:text-sm tracking-wide">
-          <span class="flex items-center gap-1.5"><span
-              class="material-symbols-outlined text-[15px] sm:text-[16px] text-status-active">verified</span> Zero
-            Backlash</span>
-          <span class="flex items-center gap-1.5"><span
-              class="material-symbols-outlined text-[15px] sm:text-[16px] text-status-active">verified</span> Multi-Axis
-            Sync</span>
-          <span class="flex items-center gap-1.5"><span
-              class="material-symbols-outlined text-[15px] sm:text-[16px] text-status-active">verified</span> 24/7 Duty
-            Cycle</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       4. DEDICATED ABOUT US & PRAYAS AUTOMATION ACADEMY SECTION
+       Two-column layout, technical capabilities, Indian industrial credentials
+       ========================================================================= -->
+  <section id="about" class="w-full bg-slate-50 py-12 sm:py-20 border-b border-slate-200/90 relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12">
+
+      <!-- About Absolute Motion Main Block -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center mb-12 sm:mb-16">
+        
+        <!-- Left Column: Story & Industrial Expertise -->
+        <div class="lg:col-span-7 flex flex-col gap-4 sm:gap-5">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-100/70 border border-blue-200 text-primary font-brand text-[11px] sm:text-xs font-bold uppercase tracking-widest self-start">
+            <span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
+            <span>About Absolute Motion</span>
+          </div>
+
+          <h2 class="font-brand text-2xl sm:text-3xl lg:text-4xl font-bold text-slate-900 tracking-tight leading-tight">
+            Engineering Intelligence Into Every Motion
+          </h2>
+
+          <p class="font-body text-xs sm:text-sm lg:text-base text-slate-600 leading-relaxed">
+            Headquartered in Rabale MIDC, Navi Mumbai, Absolute Motion Private Limited is one of India's trusted industrial automation solution providers and custom control panel manufacturers. With over a decade of hands-on engineering excellence, we specialize in solving complex production, packaging, and motion control challenges.
+          </p>
+
+          <p class="font-body text-xs sm:text-sm text-slate-600 leading-relaxed">
+            Our state-of-the-art facility integrates mechanical fabrication, laser-cut CNC panel enclosures, precision wiring, PLC/SCADA programming, and live Factory Acceptance Testing (FAT) under one roof. We operate platform-agnostic architectures across Siemens, Rockwell Automation, Omron, Schneider Electric, WAGO, EXOR, and Cognex Vision.
+          </p>
+
+          <!-- Core Stats Counters -->
+          <div class="grid grid-cols-3 gap-3 pt-2">
+            <div class="bg-white p-3 sm:p-4 rounded-xl border border-slate-200 shadow-sm text-center">
+              <div class="font-brand text-xl sm:text-2xl font-bold text-primary">10+ Years</div>
+              <div class="text-[10px] sm:text-xs text-slate-500 font-body mt-0.5">Industrial Excellence</div>
+            </div>
+            <div class="bg-white p-3 sm:p-4 rounded-xl border border-slate-200 shadow-sm text-center">
+              <div class="font-brand text-xl sm:text-2xl font-bold text-primary">4,000+</div>
+              <div class="text-[10px] sm:text-xs text-slate-500 font-body mt-0.5">Control Panels Built</div>
+            </div>
+            <div class="bg-white p-3 sm:p-4 rounded-xl border border-slate-200 shadow-sm text-center">
+              <div class="font-brand text-xl sm:text-2xl font-bold text-primary">346+</div>
+              <div class="text-[10px] sm:text-xs text-slate-500 font-body mt-0.5">Projects Delivered</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Column: Industrial Imagery Showcase -->
+        <div class="lg:col-span-5 relative">
+          <div class="relative rounded-2xl overflow-hidden shadow-xl border border-slate-200 bg-navy-deep group">
+            <img src="assets/images/cleanroom-automation.jpg" alt="Absolute Motion Automation Engineering Facility"
+              class="w-full h-80 sm:h-96 object-cover group-hover:scale-105 transition-transform duration-700" />
+            <div class="absolute inset-0 bg-gradient-to-t from-navy-deep/90 via-navy-deep/30 to-transparent"></div>
+            
+            <div class="absolute bottom-5 left-5 right-5 text-white">
+              <div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-primary/90 text-[10px] font-brand uppercase tracking-wider font-bold mb-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-status-active"></span>
+                Rabale MIDC Facility • Navi Mumbai
+              </div>
+              <div class="font-brand text-base sm:text-lg font-bold">Integrated EI&amp;C Scope &amp; Turnkey FAT</div>
+              <div class="text-xs text-slate-300 font-body mt-0.5">Laser cutting, CNC bending, control panel wiring, and synchronized live trial testing.</div>
+            </div>
+          </div>
         </div>
 
       </div>
 
-      <!-- Right Column (Desktop Telemetry HUD Card) -->
-      <div
-        class="hidden lg:flex flex-col gap-4 w-84 bg-navy-surface/85 backdrop-blur-xl border border-slate-700/60 rounded-2xl p-7 shadow-2xl flex-shrink-0 text-white">
-        <div class="flex items-center justify-between pb-3.5 border-b border-slate-700">
-          <div class="flex items-center gap-2">
-            <span class="w-2.5 h-2.5 rounded-full bg-status-active animate-pulse"></span>
-            <span class="font-brand text-xs font-semibold tracking-wider text-slate-300">SYSTEM TELEMETRY</span>
-          </div>
-          <span
-            class="font-brand text-[11px] font-bold text-sky-400 bg-sky-950/70 px-2.5 py-0.5 rounded border border-sky-800">ONLINE</span>
-        </div>
+      <!-- PRAYAS AUTOMATION ACADEMY SPOTLIGHT -->
+      <div class="rounded-2xl sm:rounded-3xl bg-white border border-slate-200 shadow-lg p-6 sm:p-8 lg:p-10 relative overflow-hidden">
+        <div class="absolute top-0 left-0 w-2 h-full bg-emerald-500"></div>
 
-        <div class="flex flex-col gap-4 py-1">
-          <div>
-            <span class="text-xs text-slate-400 uppercase tracking-wider font-brand font-semibold">Max Packaging
-              Velocity</span>
-            <div class="font-brand text-4xl font-bold text-white flex items-baseline gap-1.5 mt-0.5">
-              500 <span class="text-sm font-semibold text-sky-400">BPM</span>
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-center">
+          
+          <div class="lg:col-span-8 flex flex-col gap-3">
+            <div class="flex items-center gap-2">
+              <span class="px-2.5 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-800 font-brand text-[11px] font-bold uppercase tracking-wider">
+                Skill Development Ecosystem
+              </span>
+              <span class="text-xs text-slate-400 font-brand">•</span>
+              <span class="text-xs text-slate-500 font-brand font-semibold">Make in India Initiative</span>
+            </div>
+
+            <h3 class="font-brand text-xl sm:text-2xl lg:text-3xl font-bold text-slate-900 leading-tight">
+              PRAYAS – The Automation Academy
+            </h3>
+
+            <p class="font-body text-xs sm:text-sm text-slate-600 leading-relaxed">
+              Prayas Academy is Absolute Motion’s dedicated technical training and workforce development arm. Built to bridge the critical gap between academic technical education and real-world MSME industrial demand, Prayas powers India’s skill renaissance through hands-on training with cutting-edge industrial automation tools.
+            </p>
+
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2 font-brand text-xs">
+              <div class="bg-slate-50 p-3 rounded-xl border border-slate-200/80">
+                <div class="font-bold text-slate-900 flex items-center gap-1.5 mb-1">
+                  <span class="material-symbols-outlined text-emerald-600 text-[18px]">bolt</span>
+                  25-Day Deployment
+                </div>
+                <div class="text-[11px] text-slate-500 font-body">Fast-track precision workforce model from screening to job-ready deployment.</div>
+              </div>
+
+              <div class="bg-slate-50 p-3 rounded-xl border border-slate-200/80">
+                <div class="font-bold text-slate-900 flex items-center gap-1.5 mb-1">
+                  <span class="material-symbols-outlined text-emerald-600 text-[18px]">precision_manufacturing</span>
+                  Live Machinery Exposure
+                </div>
+                <div class="text-[11px] text-slate-500 font-body">Hands-on programming on live PLCs, HMIs, multi-axis servos, and SCADA systems.</div>
+              </div>
+
+              <div class="bg-slate-50 p-3 rounded-xl border border-slate-200/80">
+                <div class="font-bold text-slate-900 flex items-center gap-1.5 mb-1">
+                  <span class="material-symbols-outlined text-emerald-600 text-[18px]">handshake</span>
+                  MSME Workforce Continuity
+                </div>
+                <div class="text-[11px] text-slate-500 font-body">Empowering tier-2 &amp; tier-3 engineering talent with purpose-driven automation careers.</div>
+              </div>
             </div>
           </div>
 
-          <div>
-            <span class="text-xs text-slate-400 uppercase tracking-wider font-brand font-semibold">Control
-              Topology</span>
-            <div class="font-brand text-lg font-bold text-slate-100 mt-0.5">
-              Centralized PLC + HMI
-            </div>
+          <div class="lg:col-span-4 bg-slate-50 p-5 rounded-2xl border border-slate-200 text-center flex flex-col items-center justify-center">
+            <span class="text-xs font-brand uppercase tracking-wider text-slate-500 font-semibold mb-1">Technical Training Desk</span>
+            <div class="font-brand text-2xl font-bold text-slate-900 mb-1">Prayas Academy</div>
+            <p class="font-body text-xs text-slate-600 mb-4 max-w-xs">
+              Need trained industrial automation engineers or upskilling for your technical workforce?
+            </p>
+            <a href="#discuss-project"
+              class="w-full sm:w-auto inline-flex items-center justify-center gap-1.5 px-5 h-10 bg-slate-900 hover:bg-black text-white rounded-full font-brand text-xs font-bold uppercase tracking-wider transition-all">
+              <span>Connect with Prayas</span>
+              <span class="material-symbols-outlined text-[15px]">arrow_forward</span>
+            </a>
           </div>
 
-          <div>
-            <span class="text-xs text-slate-400 uppercase tracking-wider font-brand font-semibold">Integration
-              Standard</span>
-            <div class="font-brand text-lg font-bold text-slate-100 mt-0.5">
-              End-to-End Packaging Line
-            </div>
-          </div>
-        </div>
-
-        <div
-          class="pt-3.5 border-t border-slate-700 flex items-center justify-between text-xs font-brand text-slate-400">
-          <span>Bus: EtherCAT</span>
-          <span>Sync: 0.1ms Multi-Axis</span>
         </div>
       </div>
 
@@ -257,1057 +492,1237 @@
   </section>
 
   <!-- =========================================================================
-       3. CASE STUDIES SHOWCASE
+       5. CORE BUSINESS OFFERINGS (PACKAGING FOCUS)
        ========================================================================= -->
-  <main id="case-studies" class="w-full flex-1">
+  <section id="offerings" class="w-full bg-white py-12 sm:py-20 border-b border-slate-200/90 relative overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12">
 
-    <!-- =========================================================================
-         3A. CASE STUDY 1: KIT ASSEMBLY MACHINE (COMPACT & MOBILE-OPTIMIZED)
-         ========================================================================= -->
-    <section id="case-study"
-      class="w-full bg-slate-50/80 border-t border-slate-200/80 py-10 sm:py-16 relative overflow-hidden">
+      <!-- Section Header -->
+      <div class="max-w-3xl mb-8 sm:mb-12">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-100/70 border border-blue-200 text-primary font-brand text-[11px] sm:text-xs font-bold uppercase tracking-widest mb-3">
+          <span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
+          <span>Core Business Offerings</span>
+        </div>
+        <h2 class="font-brand text-2xl sm:text-3xl lg:text-4xl font-bold text-slate-900 tracking-tight leading-tight">
+          Purpose-Built Automation &amp; Control Engineering
+        </h2>
+        <p class="font-body text-xs sm:text-base text-slate-600 leading-relaxed mt-2">
+          From custom electrical control panels to turnkey high-speed packaging lines, we engineer reliable, precision-driven automation solutions tailored to eliminate production bottlenecks.
+        </p>
+      </div>
 
-      <!-- Subtle technical grid background -->
-      <div class="absolute inset-0 pointer-events-none opacity-[0.03]"
-        style="background-image: radial-gradient(#2E3693 1px, transparent 1px); background-size: 20px 20px;"></div>
+      <!-- PRIORITY SPOTLIGHT: Automation Solutions for Packaging Industries -->
+      <div id="packaging-focus" class="mb-8 lg:mb-10 rounded-2xl sm:rounded-3xl bg-gradient-to-br from-navy-deep via-navy-surface to-primary-dark text-white border border-slate-800 shadow-xl p-6 sm:p-8 lg:p-10 relative overflow-hidden">
+        
+        <div class="absolute right-0 top-0 bottom-0 w-1/3 bg-cover bg-center opacity-10 pointer-events-none hidden lg:block"
+          style="background-image: url('assets/images/hero-bottling.jpg');"></div>
 
-      <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-12">
+        <div class="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 items-center">
+          
+          <div class="lg:col-span-8 flex flex-col gap-4">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-sky-950/80 border border-sky-700/60 text-sky-300 font-brand text-[11px] sm:text-xs font-bold uppercase tracking-wider self-start">
+              <span class="material-symbols-outlined text-[14px]">star</span>
+              <span>Primary Industry Focus • Packaging Companies</span>
+            </div>
 
-        <!-- Compact Section Header -->
-        <div class="max-w-3xl mb-6 sm:mb-10">
-          <div
-            class="inline-flex items-center gap-2 px-2.5 sm:px-3 py-0.5 sm:py-1 rounded-full bg-blue-50 border border-blue-200 text-primary font-brand text-[11px] sm:text-xs font-bold uppercase tracking-wider mb-2">
-            <span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
-            <span>Featured Automation Project</span>
+            <h3 class="font-brand text-xl sm:text-2xl lg:text-3xl font-bold text-white leading-snug">
+              Packaging Line Automation &amp; High-Speed Integration
+            </h3>
+
+            <p class="font-body text-xs sm:text-sm lg:text-base text-slate-300 leading-relaxed">
+              Packaging lines require unrelenting velocity, zero straw bending, flawless torque control, and rapid recipe changeovers. We design, build, and commission turnkey packaging machinery covering rotary liquid filling, torque capping, BOPP labelling with thermal tunnels, shrink wrapping, and robotic palletizing up to 500 BPM.
+            </p>
+
+            <!-- 4 Packaging Pillar Benefits -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
+              <div class="flex items-start gap-2.5 bg-white/5 backdrop-blur-sm p-3 rounded-xl border border-white/10">
+                <span class="material-symbols-outlined text-sky-400 text-[20px] flex-shrink-0 mt-0.5">speed</span>
+                <div>
+                  <div class="font-brand text-xs sm:text-sm font-bold text-white">Speeds up to 500 BPM</div>
+                  <div class="font-body text-[11px] text-slate-300">Synchronized bottle transfer without tipping or spillage.</div>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-2.5 bg-white/5 backdrop-blur-sm p-3 rounded-xl border border-white/10">
+                <span class="material-symbols-outlined text-sky-400 text-[20px] flex-shrink-0 mt-0.5">task_alt</span>
+                <div>
+                  <div class="font-brand text-xs sm:text-sm font-bold text-white">75% Defect Elimination</div>
+                  <div class="font-body text-[11px] text-slate-300">Cognex vision + digital torque prevents leaks and crooked caps.</div>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-2.5 bg-white/5 backdrop-blur-sm p-3 rounded-xl border border-white/10">
+                <span class="material-symbols-outlined text-sky-400 text-[20px] flex-shrink-0 mt-0.5">change_circle</span>
+                <div>
+                  <div class="font-brand text-xs sm:text-sm font-bold text-white">Rapid Recipe Changeovers</div>
+                  <div class="font-body text-[11px] text-slate-300">Quick-adjust motorized rails and stored HMI SKU recipes.</div>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-2.5 bg-white/5 backdrop-blur-sm p-3 rounded-xl border border-white/10">
+                <span class="material-symbols-outlined text-sky-400 text-[20px] flex-shrink-0 mt-0.5">verified</span>
+                <div>
+                  <div class="font-brand text-xs sm:text-sm font-bold text-white">20–60 Day Commissioning</div>
+                  <div class="font-body text-[11px] text-slate-300">Full in-house FAT before delivery for zero site downtime.</div>
+                </div>
+              </div>
+            </div>
           </div>
-          <h2 class="font-brand text-xl sm:text-3xl lg:text-4xl font-bold text-slate-900 tracking-tight leading-tight">
-            Case Study 1: Kit Assembly Machine
-          </h2>
-          <p class="font-body text-xs sm:text-base text-slate-600 leading-relaxed mt-2">
-            Manual kit assembly struggled with high throughput demands, human errors, quality-based rejections and
-            contamination risk. Absolute Motion delivered a fully automated, vision-guided servo machine for pregnancy
-            testing kits in 30 days, eliminating human error at the source.
-          </p>
+
+          <!-- Right Action Box -->
+          <div class="lg:col-span-4 flex flex-col items-start lg:items-center justify-center p-5 rounded-2xl bg-white/10 backdrop-blur-md border border-white/15 text-center">
+            <span class="text-xs font-brand uppercase tracking-wider text-sky-300 font-bold mb-1">Packaging Lines Engineered</span>
+            <div class="font-brand text-3xl sm:text-4xl font-extrabold text-white mb-2">Turnkey</div>
+            <p class="font-body text-xs text-slate-300 mb-4 max-w-xs">
+              Bottling, medical diagnostic kits, cosmetics spray cappers, and automated secondary packaging lines.
+            </p>
+            <a href="#discuss-project"
+              class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 h-11 bg-primary text-white hover:bg-primary-hover rounded-full font-brand text-xs font-bold uppercase tracking-wider shadow-md transition-all">
+              <span>Consult on Packaging</span>
+              <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+            </a>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- 3 Supporting Core Offerings Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+        <!-- Offering 1: Industrial Automation Solutions -->
+        <div class="bg-slate-50 rounded-2xl p-6 sm:p-7 border border-slate-200/90 shadow-sm hover:shadow-card hover:-translate-y-1 transition-all flex flex-col justify-between group">
+          <div>
+            <div class="w-12 h-12 rounded-xl bg-blue-100/70 text-primary flex items-center justify-center mb-5 group-hover:bg-primary group-hover:text-white transition-colors">
+              <span class="material-symbols-outlined text-[24px]">precision_manufacturing</span>
+            </div>
+            <h3 class="font-brand text-lg sm:text-xl font-bold text-slate-900 mb-2.5">
+              Industrial Automation Solutions
+            </h3>
+            <p class="font-body text-xs sm:text-sm text-slate-600 leading-relaxed mb-4">
+              Turnkey robotic cells, vision-guided component assembly, and synchronous indexing systems engineered to cut cycle times to under 3 seconds with sub-millimeter repeat accuracy.
+            </p>
+          </div>
+          <div class="pt-4 border-t border-slate-200/80 flex flex-wrap gap-1.5 font-brand text-[11px] font-semibold text-slate-600">
+            <span class="px-2.5 py-1 rounded-md bg-white border border-slate-200">Robotic Cells</span>
+            <span class="px-2.5 py-1 rounded-md bg-white border border-slate-200">Cognex Vision</span>
+            <span class="px-2.5 py-1 rounded-md bg-white border border-slate-200">&lt; 3s Cycle Time</span>
+          </div>
         </div>
 
-        <!-- Compact Master-Detail Grid -->
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-5 sm:gap-6 lg:gap-8 items-start">
-
-          <!-- Left Column: Visual Showcase + 3 Integrated Metric Tiles (5 cols) -->
-          <div class="lg:col-span-5 flex flex-col gap-3">
-
-            <!-- Compact Showcase Image Card -->
-            <div class="relative rounded-2xl overflow-hidden shadow-lg border border-slate-200/80 bg-navy-deep group">
-              <div class="aspect-[16/10] w-full overflow-hidden relative">
-                <img src="assets/images/kit-assembly.jpg" alt="Kit Assembly Machine"
-                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-                <div class="absolute inset-0 bg-gradient-to-t from-navy-deep/90 via-navy-deep/20 to-transparent"></div>
-              </div>
-
-              <!-- Top Overlay Badges -->
-              <div
-                class="absolute top-2.5 sm:top-3 left-2.5 sm:left-3 right-2.5 sm:right-3 flex items-center justify-between text-[10px] sm:text-[11px] font-brand font-semibold text-white">
-                <span
-                  class="inline-flex items-center gap-1.5 px-2 sm:px-2.5 py-0.5 rounded-full bg-navy-deep/80 backdrop-blur border border-white/20">
-                  <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
-                  Turnkey in 30 Days
-                </span>
-                <span class="px-2 py-0.5 rounded-full bg-white/20 backdrop-blur border border-white/25">
-                  3 s / kit
-                </span>
-              </div>
-
-              <!-- Bottom Image Title -->
-              <div class="absolute bottom-2.5 sm:bottom-3 left-2.5 sm:left-3 right-2.5 sm:right-3">
-                <div class="text-[10px] sm:text-[11px] font-brand uppercase tracking-wider text-sky-400 font-bold">
-                  Absolute Motion Automation</div>
-                <div class="text-xs sm:text-sm font-brand font-bold text-white leading-snug">Vision-Guided Precision
-                  Servo Cell</div>
-              </div>
+        <!-- Offering 2: Control Panel Manufacturing -->
+        <div class="bg-slate-50 rounded-2xl p-6 sm:p-7 border border-slate-200/90 shadow-sm hover:shadow-card hover:-translate-y-1 transition-all flex flex-col justify-between group">
+          <div>
+            <div class="w-12 h-12 rounded-xl bg-blue-100/70 text-primary flex items-center justify-center mb-5 group-hover:bg-primary group-hover:text-white transition-colors">
+              <span class="material-symbols-outlined text-[24px]">electrical_services</span>
             </div>
-
-            <!-- 3 Compact Metric Tiles directly beneath image -->
-            <div class="grid grid-cols-3 gap-1.5 sm:gap-2.5">
-              <div class="bg-white p-2 sm:p-3 rounded-xl border border-slate-200 shadow-sm text-center">
-                <div class="font-brand text-base sm:text-xl font-bold text-primary leading-tight">40 <span
-                    class="text-[10px] sm:text-xs font-semibold">kits/m</span></div>
-                <div class="text-[9px] sm:text-[10px] text-slate-500 font-body mt-0.5 leading-tight">×4 Machines</div>
-              </div>
-              <div class="bg-white p-2 sm:p-3 rounded-xl border border-slate-200 shadow-sm text-center">
-                <div class="font-brand text-base sm:text-xl font-bold text-emerald-600 leading-tight">-75%</div>
-                <div class="text-[9px] sm:text-[10px] text-slate-500 font-body mt-0.5 leading-tight">Rejections Cut
-                </div>
-              </div>
-              <div class="bg-white p-2 sm:p-3 rounded-xl border border-slate-200 shadow-sm text-center">
-                <div class="font-brand text-base sm:text-xl font-bold text-primary leading-tight">&lt; 6 Mo</div>
-                <div class="text-[9px] sm:text-[10px] text-slate-500 font-body mt-0.5 leading-tight">100%+ ROI</div>
-              </div>
-            </div>
-
-            <!-- Micro specs badges row -->
-            <div
-              class="flex flex-wrap sm:flex-nowrap items-center justify-around sm:justify-between px-2.5 sm:px-3 py-1.5 sm:py-2 bg-white/80 rounded-xl border border-slate-200/80 text-[10px] sm:text-xs font-brand text-slate-600 gap-1.5 sm:gap-2">
-              <span class="flex items-center gap-1"><span
-                  class="material-symbols-outlined text-[14px] sm:text-[15px] text-primary">center_focus_strong</span>
-                Cognex Vision</span>
-              <span class="flex items-center gap-1"><span
-                  class="material-symbols-outlined text-[14px] sm:text-[15px] text-primary">clean_hands</span> Cleanroom
-                Safe</span>
-              <span class="flex items-center gap-1"><span
-                  class="material-symbols-outlined text-[14px] sm:text-[15px] text-primary">precision_manufacturing</span>
-                Torque Control</span>
-            </div>
-
+            <h3 class="font-brand text-lg sm:text-xl font-bold text-slate-900 mb-2.5">
+              Control Panel Manufacturing
+            </h3>
+            <p class="font-body text-xs sm:text-sm text-slate-600 leading-relaxed mb-4">
+              In-house design, fabrication, wiring, and rigorous Factory Acceptance Testing (FAT) for PLC, VFD, and multi-axis servo drive panels built to global safety codes at Rabale MIDC.
+            </p>
           </div>
-
-          <!-- Right Column: 5 Key Points Compact Matrix (7 cols) -->
-          <div class="lg:col-span-7 flex flex-col gap-2 sm:gap-2.5">
-
-            <div class="flex items-center justify-between pb-1.5 sm:pb-2 border-b border-slate-200 mb-0.5">
-              <h3 class="font-brand text-sm sm:text-lg font-bold text-slate-900 flex items-center gap-1.5">
-                <span
-                  class="material-symbols-outlined text-primary text-[16px] sm:text-[18px]">format_list_numbered</span>
-                <span>5 Key Points</span>
-              </h3>
-              <span
-                class="text-[10px] sm:text-[11px] font-brand text-slate-500 uppercase tracking-wider font-semibold">Key
-                Highlights</span>
-            </div>
-
-            <!-- Point 1 -->
-            <div
-              class="bg-white p-2.5 sm:p-3.5 rounded-xl border border-slate-200 hover:border-primary/40 shadow-sm hover:shadow transition-all flex items-start gap-2.5 sm:gap-3">
-              <span
-                class="w-6 h-6 sm:w-7 sm:h-7 rounded-lg bg-blue-50 text-primary font-brand font-bold text-xs flex items-center justify-center flex-shrink-0 mt-0.5">1</span>
-              <div class="flex-1 min-w-0">
-                <div class="font-brand text-xs sm:text-base font-bold text-slate-900 leading-snug">
-                  Speed: 40 kits/min × 4 machines, 3 s per kit
-                </div>
-                <p class="font-body text-[11px] sm:text-xs text-slate-600 mt-0.5 leading-relaxed">
-                  Multi-station synchronous automated servo assembly operating at a rapid 3-second cycle time per kit.
-                </p>
-              </div>
-            </div>
-
-            <!-- Point 2 -->
-            <div
-              class="bg-white p-2.5 sm:p-3.5 rounded-xl border border-slate-200 hover:border-primary/40 shadow-sm hover:shadow transition-all flex items-start gap-2.5 sm:gap-3">
-              <span
-                class="w-6 h-6 sm:w-7 sm:h-7 rounded-lg bg-blue-50 text-primary font-brand font-bold text-xs flex items-center justify-center flex-shrink-0 mt-0.5">2</span>
-              <div class="flex-1 min-w-0">
-                <div class="font-brand text-xs sm:text-base font-bold text-slate-900 leading-snug">
-                  Rejection: Cognex vision cuts rejections by 75%
-                </div>
-                <p class="font-body text-[11px] sm:text-xs text-slate-600 mt-0.5 leading-relaxed">
-                  Integrated high-resolution Cognex machine vision inspects component seating, strip alignment, and
-                  print clarity in real-time.
-                </p>
-              </div>
-            </div>
-
-            <!-- Point 3 -->
-            <div
-              class="bg-white p-2.5 sm:p-3.5 rounded-xl border border-slate-200 hover:border-primary/40 shadow-sm hover:shadow transition-all flex items-start gap-2.5 sm:gap-3">
-              <span
-                class="w-6 h-6 sm:w-7 sm:h-7 rounded-lg bg-blue-50 text-primary font-brand font-bold text-xs flex items-center justify-center flex-shrink-0 mt-0.5">3</span>
-              <div class="flex-1 min-w-0">
-                <div class="font-brand text-xs sm:text-base font-bold text-slate-900 leading-snug">
-                  Accuracy: Repeatable servo and torque-controlled assembly
-                </div>
-                <p class="font-body text-[11px] sm:text-xs text-slate-600 mt-0.5 leading-relaxed">
-                  Closed-loop servo actuation and precise torque feedback eliminate part deformation and ensure
-                  sub-millimeter component positioning.
-                </p>
-              </div>
-            </div>
-
-            <!-- Point 4 -->
-            <div
-              class="bg-white p-2.5 sm:p-3.5 rounded-xl border border-slate-200 hover:border-primary/40 shadow-sm hover:shadow transition-all flex items-start gap-2.5 sm:gap-3">
-              <span
-                class="w-6 h-6 sm:w-7 sm:h-7 rounded-lg bg-blue-50 text-primary font-brand font-bold text-xs flex items-center justify-center flex-shrink-0 mt-0.5">4</span>
-              <div class="flex-1 min-w-0">
-                <div class="font-brand text-xs sm:text-base font-bold text-slate-900 leading-snug">
-                  Automation: 90% fewer manual errors, 95% less contamination risk
-                </div>
-                <p class="font-body text-[11px] sm:text-xs text-slate-600 mt-0.5 leading-relaxed">
-                  Direct clean-room automated kit feeding and assembly removes human touchpoints, eliminating human
-                  error at the source.
-                </p>
-              </div>
-            </div>
-
-            <!-- Point 5 -->
-            <div
-              class="bg-white p-2.5 sm:p-3.5 rounded-xl border border-slate-200 hover:border-primary/40 shadow-sm hover:shadow transition-all flex items-start gap-2.5 sm:gap-3">
-              <span
-                class="w-6 h-6 sm:w-7 sm:h-7 rounded-lg bg-blue-50 text-primary font-brand font-bold text-xs flex items-center justify-center flex-shrink-0 mt-0.5">5</span>
-              <div class="flex-1 min-w-0">
-                <div class="font-brand text-xs sm:text-base font-bold text-slate-900 leading-snug">
-                  ROI: 100%+ in year one, payback under 6 months
-                </div>
-                <p class="font-body text-[11px] sm:text-xs text-slate-600 mt-0.5 leading-relaxed">
-                  Designed, manufactured, and commissioned in just 30 days. Fast installation and drastically reduced
-                  scrap delivered complete capital payback in under 6 months.
-                </p>
-              </div>
-            </div>
-
+          <div class="pt-4 border-t border-slate-200/80 flex flex-wrap gap-1.5 font-brand text-[11px] font-semibold text-slate-600">
+            <span class="px-2.5 py-1 rounded-md bg-white border border-slate-200">Custom Fabrication</span>
+            <span class="px-2.5 py-1 rounded-md bg-white border border-slate-200">Dual-Axis Racks</span>
+            <span class="px-2.5 py-1 rounded-md bg-white border border-slate-200">100% FAT Tested</span>
           </div>
+        </div>
 
+        <!-- Offering 3: Industrial Control Systems -->
+        <div class="bg-slate-50 rounded-2xl p-6 sm:p-7 border border-slate-200/90 shadow-sm hover:shadow-card hover:-translate-y-1 transition-all flex flex-col justify-between group">
+          <div>
+            <div class="w-12 h-12 rounded-xl bg-blue-100/70 text-primary flex items-center justify-center mb-5 group-hover:bg-primary group-hover:text-white transition-colors">
+              <span class="material-symbols-outlined text-[24px]">developer_board</span>
+            </div>
+            <h3 class="font-brand text-lg sm:text-xl font-bold text-slate-900 mb-2.5">
+              Industrial Control Systems
+            </h3>
+            <p class="font-body text-xs sm:text-sm text-slate-600 leading-relaxed mb-4">
+              Centralized PLC programming, intuitive multi-touch HMIs, SCADA line supervision, and microsecond EtherCAT fieldbus networking for seamless multi-station production control.
+            </p>
+          </div>
+          <div class="pt-4 border-t border-slate-200/80 flex flex-wrap gap-1.5 font-brand text-[11px] font-semibold text-slate-600">
+            <span class="px-2.5 py-1 rounded-md bg-white border border-slate-200">Centralized PLC</span>
+            <span class="px-2.5 py-1 rounded-md bg-white border border-slate-200">EtherCAT Motion</span>
+            <span class="px-2.5 py-1 rounded-md bg-white border border-slate-200">Real-Time HMI</span>
+          </div>
         </div>
 
       </div>
-    </section>
 
+    </div>
+  </section>
 
-
-
-
-
-
-    <!-- =========================================================================
-       3B. CASE STUDY 2: TORQUE CAPPING MACHINE (SAME FORMAT & MOBILE-OPTIMIZED)
+  <!-- =========================================================================
+       6. KEY HIGHLIGHTS SECTION (THE 5 PILLARS OF ENGINEERING EXCELLENCE)
+       Short, crisp pointers instead of large text blocks, responsive cards
        ========================================================================= -->
-    <section id="case-study-2"
-      class="w-full bg-white border-t border-slate-200/80 py-10 sm:py-16 relative overflow-hidden">
+  <section id="highlights" class="w-full bg-slate-50 py-12 sm:py-20 border-b border-slate-200/90 relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12">
 
-      <!-- Subtle technical grid background -->
-      <div class="absolute inset-0 pointer-events-none opacity-[0.03]"
-        style="background-image: radial-gradient(#2E3693 1px, transparent 1px); background-size: 20px 20px;"></div>
+      <div class="max-w-3xl mb-8 sm:mb-12">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-100/70 border border-blue-200 text-primary font-brand text-[11px] sm:text-xs font-bold uppercase tracking-wider mb-2">
+          <span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
+          <span>Key Operational Highlights</span>
+        </div>
+        <h2 class="font-brand text-2xl sm:text-3xl lg:text-4xl font-bold text-slate-900 tracking-tight leading-tight">
+          5 Pillars of Absolute Motion Engineering
+        </h2>
+        <p class="font-body text-xs sm:text-base text-slate-600 leading-relaxed mt-2">
+          Measurable performance outcomes engineered into every packaging line, robotic cell, and custom control panel we deliver.
+        </p>
+      </div>
 
-      <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-12">
+      <!-- 5 Clean Highlight Cards in a Responsive Grid -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 sm:gap-5">
 
-        <!-- Compact Section Header -->
-        <div class="max-w-3xl mb-6 sm:mb-10">
-          <div
-            class="inline-flex items-center gap-2 px-2.5 sm:px-3 py-0.5 sm:py-1 rounded-full bg-blue-50 border border-blue-200 text-primary font-brand text-[11px] sm:text-xs font-bold uppercase tracking-wider mb-2">
-            <span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
-            <span>Featured Packaging Project</span>
+        <!-- Point 1 -->
+        <div class="bg-white p-5 rounded-2xl border border-slate-200/90 hover:border-primary/50 shadow-sm hover:shadow transition-all flex flex-col justify-between">
+          <div>
+            <div class="w-8 h-8 rounded-lg bg-primary text-white font-brand font-bold text-sm flex items-center justify-center mb-3.5">
+              01
+            </div>
+            <div class="font-brand text-base font-bold text-slate-900 leading-snug mb-1.5">
+              High-Speed Throughput
+            </div>
+            <p class="font-body text-xs text-slate-600 leading-relaxed">
+              Speeds up to 500 BPM with microsecond EtherCAT multi-axis synchronization and zero bottle tipping.
+            </p>
           </div>
-          <h2 class="font-brand text-xl sm:text-3xl lg:text-4xl font-bold text-slate-900 tracking-tight leading-tight">
-            Case Study 2: Torque Capping Machine
-          </h2>
-          <p class="font-body text-xs sm:text-base text-slate-600 leading-relaxed mt-2">
-            Capping spray bottles meant dealing with bending straws, oval caps that were hard to orient, and tight
-            alignment demands. Absolute Motion delivered a 12-axis servo capping machine for spray caps in just 20 days,
-            with accurate cap placement and no straw bending.
-          </p>
+          <div class="mt-4 pt-3 border-t border-slate-100 text-[11px] font-brand font-semibold text-primary">
+            500 BPM Max Velocity
+          </div>
         </div>
 
-        <!-- Compact Master-Detail Grid -->
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-5 sm:gap-6 lg:gap-8 items-start">
-
-          <!-- Left Column: Visual Showcase + 3 Integrated Metric Tiles (5 cols) -->
-          <div class="lg:col-span-5 flex flex-col gap-3">
-
-            <!-- Compact Showcase Image Card -->
-            <div class="relative rounded-2xl overflow-hidden shadow-lg border border-slate-200/80 bg-navy-deep group">
-              <div class="aspect-[16/10] w-full overflow-hidden relative">
-                <img src="assets/images/filling-capping.jpg" alt="Torque Capping Machine"
-                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-                <div class="absolute inset-0 bg-gradient-to-t from-navy-deep/90 via-navy-deep/20 to-transparent"></div>
-              </div>
-
-              <!-- Top Overlay Badges -->
-              <div
-                class="absolute top-2.5 sm:top-3 left-2.5 sm:left-3 right-2.5 sm:right-3 flex items-center justify-between text-[10px] sm:text-[11px] font-brand font-semibold text-white">
-                <span
-                  class="inline-flex items-center gap-1.5 px-2 sm:px-2.5 py-0.5 rounded-full bg-navy-deep/80 backdrop-blur border border-white/20">
-                  <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
-                  Turnkey in 20 Days
-                </span>
-                <span class="px-2 py-0.5 rounded-full bg-white/20 backdrop-blur border border-white/25">
-                  12-Axis Servo
-                </span>
-              </div>
-
-              <!-- Bottom Image Title -->
-              <div class="absolute bottom-2.5 sm:bottom-3 left-2.5 sm:left-3 right-2.5 sm:right-3">
-                <div class="text-[10px] sm:text-[11px] font-brand uppercase tracking-wider text-sky-400 font-bold">
-                  Absolute Motion Automation</div>
-                <div class="text-xs sm:text-sm font-brand font-bold text-white leading-snug">12-Axis Servo Torque
-                  Capping Cell</div>
-              </div>
+        <!-- Point 2 -->
+        <div class="bg-white p-5 rounded-2xl border border-slate-200/90 hover:border-primary/50 shadow-sm hover:shadow transition-all flex flex-col justify-between">
+          <div>
+            <div class="w-8 h-8 rounded-lg bg-primary text-white font-brand font-bold text-sm flex items-center justify-center mb-3.5">
+              02
             </div>
-
-            <!-- 3 Compact Metric Tiles directly beneath image -->
-            <div class="grid grid-cols-3 gap-1.5 sm:gap-2.5">
-              <div class="bg-white p-2 sm:p-3 rounded-xl border border-slate-200 shadow-sm text-center">
-                <div class="font-brand text-base sm:text-xl font-bold text-primary leading-tight">36 <span
-                    class="text-[10px] sm:text-xs font-semibold">bpm</span></div>
-                <div class="text-[9px] sm:text-[10px] text-slate-500 font-body mt-0.5 leading-tight">Cap Speed</div>
-              </div>
-              <div class="bg-white p-2 sm:p-3 rounded-xl border border-slate-200 shadow-sm text-center">
-                <div class="font-brand text-base sm:text-xl font-bold text-emerald-600 leading-tight">80%</div>
-                <div class="text-[9px] sm:text-[10px] text-slate-500 font-body mt-0.5 leading-tight">Straw Alignment
-                </div>
-              </div>
-              <div class="bg-white p-2 sm:p-3 rounded-xl border border-slate-200 shadow-sm text-center">
-                <div class="font-brand text-base sm:text-xl font-bold text-primary leading-tight">-75%</div>
-                <div class="text-[9px] sm:text-[10px] text-slate-500 font-body mt-0.5 leading-tight">Fewer Errors</div>
-              </div>
+            <div class="font-brand text-base font-bold text-slate-900 leading-snug mb-1.5">
+              75% Defect Elimination
             </div>
-
-            <!-- Micro specs badges row -->
-            <div
-              class="flex flex-wrap sm:flex-nowrap items-center justify-around sm:justify-between px-2.5 sm:px-3 py-1.5 sm:py-2 bg-slate-50 rounded-xl border border-slate-200/80 text-[10px] sm:text-xs font-brand text-slate-600 gap-1.5 sm:gap-2">
-              <span class="flex items-center gap-1"><span
-                  class="material-symbols-outlined text-[14px] sm:text-[15px] text-primary">straighten</span> No Straw
-                Bending</span>
-              <span class="flex items-center gap-1"><span
-                  class="material-symbols-outlined text-[14px] sm:text-[15px] text-primary">sync</span> Oval Cap
-                Handling</span>
-              <span class="flex items-center gap-1"><span
-                  class="material-symbols-outlined text-[14px] sm:text-[15px] text-primary">memory</span> EtherCAT
-                Motion</span>
-            </div>
-
+            <p class="font-body text-xs text-slate-600 leading-relaxed">
+              Integrated Cognex vision and closed-loop digital torque sensing eliminate cross-threading and scrap.
+            </p>
           </div>
-
-          <!-- Right Column: 5 Key Points Compact Matrix (7 cols) -->
-          <div class="lg:col-span-7 flex flex-col gap-2 sm:gap-2.5">
-
-            <div class="flex items-center justify-between pb-1.5 sm:pb-2 border-b border-slate-200 mb-0.5">
-              <h3 class="font-brand text-sm sm:text-lg font-bold text-slate-900 flex items-center gap-1.5">
-                <span
-                  class="material-symbols-outlined text-primary text-[16px] sm:text-[18px]">format_list_numbered</span>
-                <span>5 Key Points</span>
-              </h3>
-              <span
-                class="text-[10px] sm:text-[11px] font-brand text-slate-500 uppercase tracking-wider font-semibold">Key
-                Highlights</span>
-            </div>
-
-            <!-- Point 1 -->
-            <div
-              class="bg-slate-50/70 p-2.5 sm:p-3.5 rounded-xl border border-slate-200 hover:border-primary/40 shadow-sm hover:shadow transition-all flex items-start gap-2.5 sm:gap-3">
-              <span
-                class="w-6 h-6 sm:w-7 sm:h-7 rounded-lg bg-blue-50 text-primary font-brand font-bold text-xs flex items-center justify-center flex-shrink-0 mt-0.5">1</span>
-              <div class="flex-1 min-w-0">
-                <div class="font-brand text-xs sm:text-base font-bold text-slate-900 leading-snug">
-                  Speed: 36 bottles/min with higher cap throughput
-                </div>
-                <p class="font-body text-[11px] sm:text-xs text-slate-600 mt-0.5 leading-relaxed">
-                  Synchronous high-speed indexing delivers smooth bottle transfer and consistent torque application
-                  without bottle spillage.
-                </p>
-              </div>
-            </div>
-
-            <!-- Point 2 -->
-            <div
-              class="bg-slate-50/70 p-2.5 sm:p-3.5 rounded-xl border border-slate-200 hover:border-primary/40 shadow-sm hover:shadow transition-all flex items-start gap-2.5 sm:gap-3">
-              <span
-                class="w-6 h-6 sm:w-7 sm:h-7 rounded-lg bg-blue-50 text-primary font-brand font-bold text-xs flex items-center justify-center flex-shrink-0 mt-0.5">2</span>
-              <div class="flex-1 min-w-0">
-                <div class="font-brand text-xs sm:text-base font-bold text-slate-900 leading-snug">
-                  Straw bending: Eliminated, with 80% better straw alignment
-                </div>
-                <p class="font-body text-[11px] sm:text-xs text-slate-600 mt-0.5 leading-relaxed">
-                  Specially engineered vertical dip-tube guides prevent straw deformation and guarantee perfect
-                  insertion into bottles.
-                </p>
-              </div>
-            </div>
-
-            <!-- Point 3 -->
-            <div
-              class="bg-slate-50/70 p-2.5 sm:p-3.5 rounded-xl border border-slate-200 hover:border-primary/40 shadow-sm hover:shadow transition-all flex items-start gap-2.5 sm:gap-3">
-              <span
-                class="w-6 h-6 sm:w-7 sm:h-7 rounded-lg bg-blue-50 text-primary font-brand font-bold text-xs flex items-center justify-center flex-shrink-0 mt-0.5">3</span>
-              <div class="flex-1 min-w-0">
-                <div class="font-brand text-xs sm:text-base font-bold text-slate-900 leading-snug">
-                  Cap orientation: Accurate oval cap handling and 90% better cap placement
-                </div>
-                <p class="font-body text-[11px] sm:text-xs text-slate-600 mt-0.5 leading-relaxed">
-                  Active orientation servos accurately position asymmetric, oval, and spray trigger caps prior to final
-                  torquing.
-                </p>
-              </div>
-            </div>
-
-            <!-- Point 4 -->
-            <div
-              class="bg-slate-50/70 p-2.5 sm:p-3.5 rounded-xl border border-slate-200 hover:border-primary/40 shadow-sm hover:shadow transition-all flex items-start gap-2.5 sm:gap-3">
-              <span
-                class="w-6 h-6 sm:w-7 sm:h-7 rounded-lg bg-blue-50 text-primary font-brand font-bold text-xs flex items-center justify-center flex-shrink-0 mt-0.5">4</span>
-              <div class="flex-1 min-w-0">
-                <div class="font-brand text-xs sm:text-base font-bold text-slate-900 leading-snug">
-                  Errors: 75% fewer capping errors
-                </div>
-                <p class="font-body text-[11px] sm:text-xs text-slate-600 mt-0.5 leading-relaxed">
-                  Closed-loop digital torque sensing detects cross-threading and loose caps instantly, virtually
-                  eliminating line rejection.
-                </p>
-              </div>
-            </div>
-
-            <!-- Point 5 -->
-            <div
-              class="bg-slate-50/70 p-2.5 sm:p-3.5 rounded-xl border border-slate-200 hover:border-primary/40 shadow-sm hover:shadow transition-all flex items-start gap-2.5 sm:gap-3">
-              <span
-                class="w-6 h-6 sm:w-7 sm:h-7 rounded-lg bg-blue-50 text-primary font-brand font-bold text-xs flex items-center justify-center flex-shrink-0 mt-0.5">5</span>
-              <div class="flex-1 min-w-0">
-                <div class="font-brand text-xs sm:text-base font-bold text-slate-900 leading-snug">
-                  Control: 12-axis EtherCAT motion with a compact one-drive-per-two-motors panel
-                </div>
-                <p class="font-body text-[11px] sm:text-xs text-slate-600 mt-0.5 leading-relaxed">
-                  High-efficiency dual-axis drive architecture shrinks panel size while providing microsecond multi-axis
-                  EtherCAT synchronization.
-                </p>
-              </div>
-            </div>
-
+          <div class="mt-4 pt-3 border-t border-slate-100 text-[11px] font-brand font-semibold text-emerald-700">
+            Cognex Vision Verified
           </div>
+        </div>
 
+        <!-- Point 3 -->
+        <div class="bg-white p-5 rounded-2xl border border-slate-200/90 hover:border-primary/50 shadow-sm hover:shadow transition-all flex flex-col justify-between">
+          <div>
+            <div class="w-8 h-8 rounded-lg bg-primary text-white font-brand font-bold text-sm flex items-center justify-center mb-3.5">
+              03
+            </div>
+            <div class="font-brand text-base font-bold text-slate-900 leading-snug mb-1.5">
+              4,000+ In-House Panels
+            </div>
+            <p class="font-body text-xs text-slate-600 leading-relaxed">
+              Laser-cut enclosures, CNC bending, wiring, and 100% FAT testing in Rabale MIDC, Navi Mumbai.
+            </p>
+          </div>
+          <div class="mt-4 pt-3 border-t border-slate-100 text-[11px] font-brand font-semibold text-primary">
+            100% In-House FAT
+          </div>
+        </div>
+
+        <!-- Point 4 -->
+        <div class="bg-white p-5 rounded-2xl border border-slate-200/90 hover:border-primary/50 shadow-sm hover:shadow transition-all flex flex-col justify-between">
+          <div>
+            <div class="w-8 h-8 rounded-lg bg-primary text-white font-brand font-bold text-sm flex items-center justify-center mb-3.5">
+              04
+            </div>
+            <div class="font-brand text-base font-bold text-slate-900 leading-snug mb-1.5">
+              20–60 Day Commissioning
+            </div>
+            <p class="font-body text-xs text-slate-600 leading-relaxed">
+              Fast-track engineering, mechanical integration, and site deployment with minimal line disruption.
+            </p>
+          </div>
+          <div class="mt-4 pt-3 border-t border-slate-100 text-[11px] font-brand font-semibold text-primary">
+            Turnkey Deployment
+          </div>
+        </div>
+
+        <!-- Point 5 -->
+        <div class="bg-white p-5 rounded-2xl border border-slate-200/90 hover:border-primary/50 shadow-sm hover:shadow transition-all flex flex-col justify-between">
+          <div>
+            <div class="w-8 h-8 rounded-lg bg-primary text-white font-brand font-bold text-sm flex items-center justify-center mb-3.5">
+              05
+            </div>
+            <div class="font-brand text-base font-bold text-slate-900 leading-snug mb-1.5">
+              Payback Under 6 Months
+            </div>
+            <p class="font-body text-xs text-slate-600 leading-relaxed">
+              Drastically reduced material loss and 90% fewer manual errors generate over 100% ROI in year one.
+            </p>
+          </div>
+          <div class="mt-4 pt-3 border-t border-slate-100 text-[11px] font-brand font-semibold text-emerald-700">
+            100%+ Year 1 ROI
+          </div>
         </div>
 
       </div>
-    </section>
 
+    </div>
+  </section>
 
-
-
-
-
-
-    <!-- =========================================================================
-       3C. CASE STUDY 3: FULLY AUTOMATED BOTTLE LINE (SAME FORMAT & MOBILE-OPTIMIZED)
+  <!-- =========================================================================
+       7. DEDICATED VIDEO SHOWCASE SECTION
+       Showcasing Absolute Motion's live machinery & automation capabilities
        ========================================================================= -->
-    <section id="case-study-3"
-      class="w-full bg-slate-50/80 border-t border-slate-200/80 py-10 sm:py-16 relative overflow-hidden">
+  <section id="video-showcase" class="w-full bg-navy-deep py-12 sm:py-20 text-white relative overflow-hidden">
+    <!-- Grid pattern background -->
+    <div class="absolute inset-0 engineering-grid pointer-events-none opacity-30"></div>
 
-      <!-- Subtle technical grid background -->
-      <div class="absolute inset-0 pointer-events-none opacity-[0.03]"
-        style="background-image: radial-gradient(#2E3693 1px, transparent 1px); background-size: 20px 20px;"></div>
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-12">
 
-      <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-12">
-
-        <!-- Compact Section Header -->
-        <div class="max-w-3xl mb-6 sm:mb-10">
-          <div
-            class="inline-flex items-center gap-2 px-2.5 sm:px-3 py-0.5 sm:py-1 rounded-full bg-blue-50 border border-blue-200 text-primary font-brand text-[11px] sm:text-xs font-bold uppercase tracking-wider mb-2">
-            <span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
-            <span>Featured Turnkey Project</span>
-          </div>
-          <h2 class="font-brand text-xl sm:text-3xl lg:text-4xl font-bold text-slate-900 tracking-tight leading-tight">
-            Case Study 3: Fully Automated Bottle Line: Filling, Labelling &amp; Packaging
-          </h2>
-          <p class="font-body text-xs sm:text-base text-slate-600 leading-relaxed mt-2">
-            Design and integration of a fully automated bottle packaging line covering rotary filling and capping, BOPP
-            labelling, warmer and cooling tunnels, shrink wrapping and palletizing. A centralized PLC and HMI control
-            system keeps every stage synchronized, with production speeds of up to 500 bottles per minute.
-          </p>
+      <div class="max-w-3xl mb-8 sm:mb-12">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-900/60 border border-blue-700/60 text-sky-300 font-brand text-[11px] sm:text-xs font-bold uppercase tracking-widest mb-3">
+          <span class="material-symbols-outlined text-[14px]">videocam</span>
+          <span>Industrial Automation in Action</span>
         </div>
-
-        <!-- Compact Master-Detail Grid -->
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-5 sm:gap-6 lg:gap-8 items-start">
-
-          <!-- Left Column: Visual Showcase + 3 Integrated Metric Tiles (5 cols) -->
-          <div class="lg:col-span-5 flex flex-col gap-3">
-
-            <!-- Compact Showcase Image Card -->
-            <div class="relative rounded-2xl overflow-hidden shadow-lg border border-slate-200/80 bg-navy-deep group">
-              <div class="aspect-[16/10] w-full overflow-hidden relative">
-                <img src="assets/images/robotic-palletizing.jpg"
-                  alt="Fully Automated Bottle Line: Filling, Labelling &amp; Packaging"
-                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-                <div class="absolute inset-0 bg-gradient-to-t from-navy-deep/90 via-navy-deep/20 to-transparent"></div>
-              </div>
-
-              <!-- Top Overlay Badges -->
-              <div
-                class="absolute top-2.5 sm:top-3 left-2.5 sm:left-3 right-2.5 sm:right-3 flex items-center justify-between text-[10px] sm:text-[11px] font-brand font-semibold text-white">
-                <span
-                  class="inline-flex items-center gap-1.5 px-2 sm:px-2.5 py-0.5 rounded-full bg-navy-deep/80 backdrop-blur border border-white/20">
-                  <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
-                  Up to 500 Bottles / Min
-                </span>
-                <span class="px-2 py-0.5 rounded-full bg-white/20 backdrop-blur border border-white/25">
-                  Central PLC + HMI
-                </span>
-              </div>
-
-              <!-- Bottom Image Title -->
-              <div class="absolute bottom-2.5 sm:bottom-3 left-2.5 sm:left-3 right-2.5 sm:right-3">
-                <div class="text-[10px] sm:text-[11px] font-brand uppercase tracking-wider text-sky-400 font-bold">
-                  Absolute Motion Automation</div>
-                <div class="text-xs sm:text-sm font-brand font-bold text-white leading-snug">Complete Turnkey Bottling
-                  &amp; Palletizing Line</div>
-              </div>
-            </div>
-
-            <!-- 3 Compact Metric Tiles directly beneath image -->
-            <div class="grid grid-cols-3 gap-1.5 sm:gap-2.5">
-              <div class="bg-white p-2 sm:p-3 rounded-xl border border-slate-200 shadow-sm text-center">
-                <div class="font-brand text-base sm:text-xl font-bold text-primary leading-tight">500 <span
-                    class="text-[10px] sm:text-xs font-semibold">bpm</span></div>
-                <div class="text-[9px] sm:text-[10px] text-slate-500 font-body mt-0.5 leading-tight">Line Velocity</div>
-              </div>
-              <div class="bg-white p-2 sm:p-3 rounded-xl border border-slate-200 shadow-sm text-center">
-                <div class="font-brand text-base sm:text-xl font-bold text-emerald-600 leading-tight">End-to-End</div>
-                <div class="text-[9px] sm:text-[10px] text-slate-500 font-body mt-0.5 leading-tight">5 Stages Synced
-                </div>
-              </div>
-              <div class="bg-white p-2 sm:p-3 rounded-xl border border-slate-200 shadow-sm text-center">
-                <div class="font-brand text-base sm:text-xl font-bold text-primary leading-tight">1 PLC</div>
-                <div class="text-[9px] sm:text-[10px] text-slate-500 font-body mt-0.5 leading-tight">Central Control
-                </div>
-              </div>
-            </div>
-
-            <!-- Micro specs badges row -->
-            <div
-              class="flex flex-wrap sm:flex-nowrap items-center justify-around sm:justify-between px-2.5 sm:px-3 py-1.5 sm:py-2 bg-white/80 rounded-xl border border-slate-200/80 text-[10px] sm:text-xs font-brand text-slate-600 gap-1.5 sm:gap-2">
-              <span class="flex items-center gap-1"><span
-                  class="material-symbols-outlined text-[14px] sm:text-[15px] text-primary">local_shipping</span>
-                Palletizing</span>
-              <span class="flex items-center gap-1"><span
-                  class="material-symbols-outlined text-[14px] sm:text-[15px] text-primary">label</span> BOPP
-                Labelling</span>
-              <span class="flex items-center gap-1"><span
-                  class="material-symbols-outlined text-[14px] sm:text-[15px] text-primary">dashboard</span> Recipe
-                Control</span>
-            </div>
-
-          </div>
-
-          <!-- Right Column: 5 Key Points Compact Matrix (7 cols) -->
-          <div class="lg:col-span-7 flex flex-col gap-2 sm:gap-2.5">
-
-            <div class="flex items-center justify-between pb-1.5 sm:pb-2 border-b border-slate-200 mb-0.5">
-              <h3 class="font-brand text-sm sm:text-lg font-bold text-slate-900 flex items-center gap-1.5">
-                <span
-                  class="material-symbols-outlined text-primary text-[16px] sm:text-[18px]">format_list_numbered</span>
-                <span>5 Key Points</span>
-              </h3>
-              <span
-                class="text-[10px] sm:text-[11px] font-brand text-slate-500 uppercase tracking-wider font-semibold">Key
-                Highlights</span>
-            </div>
-
-            <!-- Point 1 -->
-            <div
-              class="bg-white p-2.5 sm:p-3.5 rounded-xl border border-slate-200 hover:border-primary/40 shadow-sm hover:shadow transition-all flex items-start gap-2.5 sm:gap-3">
-              <span
-                class="w-6 h-6 sm:w-7 sm:h-7 rounded-lg bg-blue-50 text-primary font-brand font-bold text-xs flex items-center justify-center flex-shrink-0 mt-0.5">1</span>
-              <div class="flex-1 min-w-0">
-                <div class="font-brand text-xs sm:text-base font-bold text-slate-900 leading-snug">
-                  Speed: Up to 500 bottles/min with synchronized automation
-                </div>
-                <p class="font-body text-[11px] sm:text-xs text-slate-600 mt-0.5 leading-relaxed">
-                  Synchronized line tracking coordinates rotary filling, capping, and conveyor transfer at speeds up to
-                  500 bottles/min.
-                </p>
-              </div>
-            </div>
-
-            <!-- Point 2 -->
-            <div
-              class="bg-white p-2.5 sm:p-3.5 rounded-xl border border-slate-200 hover:border-primary/40 shadow-sm hover:shadow transition-all flex items-start gap-2.5 sm:gap-3">
-              <span
-                class="w-6 h-6 sm:w-7 sm:h-7 rounded-lg bg-blue-50 text-primary font-brand font-bold text-xs flex items-center justify-center flex-shrink-0 mt-0.5">2</span>
-              <div class="flex-1 min-w-0">
-                <div class="font-brand text-xs sm:text-base font-bold text-slate-900 leading-snug">
-                  End-to-end line: Filling, capping, labelling, shrink wrapping and palletizing in one integrated
-                  process
-                </div>
-                <p class="font-body text-[11px] sm:text-xs text-slate-600 mt-0.5 leading-relaxed">
-                  Complete unbroken automated flow from primary bottle container infeed all the way to shipping-ready
-                  pallet loads.
-                </p>
-              </div>
-            </div>
-
-            <!-- Point 3 -->
-            <div
-              class="bg-white p-2.5 sm:p-3.5 rounded-xl border border-slate-200 hover:border-primary/40 shadow-sm hover:shadow transition-all flex items-start gap-2.5 sm:gap-3">
-              <span
-                class="w-6 h-6 sm:w-7 sm:h-7 rounded-lg bg-blue-50 text-primary font-brand font-bold text-xs flex items-center justify-center flex-shrink-0 mt-0.5">3</span>
-              <div class="flex-1 min-w-0">
-                <div class="font-brand text-xs sm:text-base font-bold text-slate-900 leading-snug">
-                  Precise labelling: BOPP labeller, with warmer and cooling tunnels to stabilize bottles
-                </div>
-                <p class="font-body text-[11px] sm:text-xs text-slate-600 mt-0.5 leading-relaxed">
-                  In-line thermal tunnels eliminate moisture condensation, ensuring flawless, bubble-free BOPP
-                  wrap-around label application.
-                </p>
-              </div>
-            </div>
-
-            <!-- Point 4 -->
-            <div
-              class="bg-white p-2.5 sm:p-3.5 rounded-xl border border-slate-200 hover:border-primary/40 shadow-sm hover:shadow transition-all flex items-start gap-2.5 sm:gap-3">
-              <span
-                class="w-6 h-6 sm:w-7 sm:h-7 rounded-lg bg-blue-50 text-primary font-brand font-bold text-xs flex items-center justify-center flex-shrink-0 mt-0.5">4</span>
-              <div class="flex-1 min-w-0">
-                <div class="font-brand text-xs sm:text-base font-bold text-slate-900 leading-snug">
-                  Central control: One PLC + HMI system for seamless synchronization and real-time monitoring
-                </div>
-                <p class="font-body text-[11px] sm:text-xs text-slate-600 mt-0.5 leading-relaxed">
-                  Centralized automation architecture delivers unified diagnostics, dynamic speed matching, and full
-                  line performance visibility.
-                </p>
-              </div>
-            </div>
-
-            <!-- Point 5 -->
-            <div
-              class="bg-white p-2.5 sm:p-3.5 rounded-xl border border-slate-200 hover:border-primary/40 shadow-sm hover:shadow transition-all flex items-start gap-2.5 sm:gap-3">
-              <span
-                class="w-6 h-6 sm:w-7 sm:h-7 rounded-lg bg-blue-50 text-primary font-brand font-bold text-xs flex items-center justify-center flex-shrink-0 mt-0.5">5</span>
-              <div class="flex-1 min-w-0">
-                <div class="font-brand text-xs sm:text-base font-bold text-slate-900 leading-snug">
-                  Flexibility: Recipe control and automated changeovers across product SKUs
-                </div>
-                <p class="font-body text-[11px] sm:text-xs text-slate-600 mt-0.5 leading-relaxed">
-                  Intuitive recipe management enables quick bottle format changes with automated motorized guide rail
-                  adjustments.
-                </p>
-              </div>
-            </div>
-
-          </div>
-
-        </div>
-
-        <!-- Compact CTA Bar (Mobile Stack & Full-Width Touch Target) -->
-        <div
-          class="mt-8 sm:mt-12 bg-gradient-to-r from-navy-deep via-navy-surface to-primary p-4 sm:p-5 rounded-2xl text-white shadow-md flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 sm:gap-4 border border-slate-800">
-          <div class="flex items-center gap-3 text-center sm:text-left">
-            <div
-              class="w-9 h-9 rounded-xl bg-white/10 flex items-center justify-center text-sky-400 flex-shrink-0 hidden sm:flex">
-              <span class="material-symbols-outlined text-[20px]">precision_manufacturing</span>
-            </div>
-            <div>
-              <div class="font-brand text-xs sm:text-base font-bold text-white">Need a custom kit assembly or automated
-                packaging solution?</div>
-              <div class="text-[11px] sm:text-xs text-slate-300 font-body">Turnkey servo automation &amp; vision systems
-                delivered in 20–60 days.</div>
-            </div>
-          </div>
-          <a href="#discuss-project"
-            class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 h-11 sm:h-11 bg-white text-primary rounded-full font-brand text-xs sm:text-sm font-bold uppercase tracking-wider hover:bg-slate-100 hover:scale-105 active:scale-95 transition-all text-center whitespace-nowrap">
-            <span>Discuss Your Project</span>
-            <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
-          </a>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- =========================================================================
-         PROJECT CONSULTATION & INQUIRY FORM SECTION (JUST ABOVE FOOTER)
-         ========================================================================= -->
-    <section id="discuss-project" class="w-full bg-slate-50 border-t border-slate-200/90 py-12 sm:py-20 scroll-mt-16 sm:scroll-mt-20 relative overflow-hidden">
-      <!-- Background subtle technical grid -->
-      <div class="absolute inset-0 w-full h-full pointer-events-none opacity-40" 
-           style="background-image: radial-gradient(rgba(46,54,147,0.08) 1px, transparent 1px); background-size: 24px 24px;">
+        <h2 class="font-brand text-2xl sm:text-3xl lg:text-4xl font-bold text-white tracking-tight leading-tight">
+          Engineering Intelligence in Action
+        </h2>
+        <p class="font-body text-xs sm:text-base text-slate-300 leading-relaxed mt-2">
+          Watch Absolute Motion’s high-precision automation, servo motion control, and high-speed packaging machinery in live operation.
+        </p>
       </div>
 
-      <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-12">
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+      <!-- Video Player Presentation Card -->
+      <div class="rounded-2xl sm:rounded-3xl bg-navy-surface/90 border border-slate-700/80 shadow-2xl overflow-hidden p-3 sm:p-5">
+        <div class="relative w-full rounded-xl sm:rounded-2xl overflow-hidden bg-black aspect-video max-h-[620px] flex items-center justify-center">
+          <video 
+            id="automation-video"
+            controls 
+            preload="metadata" 
+            poster="assets/images/hero-bottling.jpg" 
+            class="w-full h-full object-cover">
+            <source src="assets/videos/Testimonial.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
 
-          <!-- Left Column: Context & Direct Engineering Desk (5 cols) -->
-          <div class="lg:col-span-5 flex flex-col gap-5 sm:gap-6">
-            <div>
-              <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-100/70 border border-blue-200 text-primary font-brand text-[11px] sm:text-xs font-bold uppercase tracking-widest mb-3">
-                <span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
-                <span>Project Consultation &amp; RFQ</span>
-              </div>
-              <h2 class="font-brand text-2xl sm:text-3xl lg:text-4xl font-bold text-slate-900 tracking-tight leading-tight">
-                Let’s Engineer Your Automation Solution
-              </h2>
-              <p class="font-body text-xs sm:text-sm text-slate-600 leading-relaxed mt-2.5">
-                Whether you need a high-speed vision-guided kit assembly machine, a multi-axis servo torque capper, or a complete 500 BPM bottling line, our engineering team in Rabale MIDC is ready to analyze your requirements.
-              </p>
-            </div>
-
-            <!-- Value Highlights -->
-            <div class="flex flex-col gap-3 font-brand text-xs sm:text-sm text-slate-700">
-              <div class="flex items-start gap-3 bg-white p-3 rounded-xl border border-slate-200 shadow-sm">
-                <span class="material-symbols-outlined text-[20px] text-primary flex-shrink-0 mt-0.5">timer</span>
-                <div>
-                  <div class="font-bold text-slate-900">24-Hour Feasibility Response</div>
-                  <div class="text-[11px] sm:text-xs text-slate-500 font-body">Rapid review of your cycle time, space envelope, and throughput target.</div>
-                </div>
-              </div>
-
-              <div class="flex items-start gap-3 bg-white p-3 rounded-xl border border-slate-200 shadow-sm">
-                <span class="material-symbols-outlined text-[20px] text-primary flex-shrink-0 mt-0.5">verified_user</span>
-                <div>
-                  <div class="font-bold text-slate-900">NDA &amp; IP Protection Guaranteed</div>
-                  <div class="text-[11px] sm:text-xs text-slate-500 font-body">Complete confidentiality for your proprietary parts, kits, and manufacturing processes.</div>
-                </div>
-              </div>
-
-              <div class="flex items-start gap-3 bg-white p-3 rounded-xl border border-slate-200 shadow-sm">
-                <span class="material-symbols-outlined text-[20px] text-primary flex-shrink-0 mt-0.5">factory</span>
-                <div>
-                  <div class="font-bold text-slate-900">In-House Manufacturing &amp; FAT</div>
-                  <div class="text-[11px] sm:text-xs text-slate-500 font-body">Integrated mechanical machining, panel assembly, and live trial testing in Navi Mumbai.</div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Direct Contact Card -->
-            <div class="bg-navy-deep text-white p-4 sm:p-5 rounded-2xl border border-slate-800 shadow-md">
-              <div class="text-xs font-brand uppercase tracking-wider text-sky-400 font-bold mb-2">Prefer direct discussion?</div>
-              <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs font-brand">
-                <a href="tel:+912245000947" class="flex items-center gap-2 hover:text-sky-300 transition-colors">
-                  <span class="material-symbols-outlined text-[18px] text-sky-400">call</span>
-                  <span class="font-semibold">+91-22-4500 0947</span>
-                </a>
-                <a href="mailto:adsilva@absolutemotion.in" class="flex items-center gap-2 hover:text-sky-300 transition-colors">
-                  <span class="material-symbols-outlined text-[18px] text-sky-400">mail</span>
-                  <span class="font-semibold">adsilva@absolutemotion.in</span>
-                </a>
-              </div>
-            </div>
+        <!-- Video Metadata Strip -->
+        <div class="pt-4 px-2 sm:px-3 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs font-brand text-slate-300">
+          <div class="flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-status-active animate-pulse"></span>
+            <span class="font-bold text-white">Live Automation &amp; Client Testimonial Showcase</span>
+            <span class="text-slate-500">•</span>
+            <span class="text-slate-400">Packaging &amp; Assembly Systems</span>
           </div>
+          <div class="flex items-center gap-4 text-[11px] text-slate-400">
+            <span>Video Resolution: 1080p Full HD</span>
+            <span>Facility: Rabale MIDC</span>
+          </div>
+        </div>
+      </div>
 
-          <!-- Right Column: Interactive Consultation Form (7 cols) -->
-          <div class="lg:col-span-7">
-            <div class="bg-white rounded-2xl sm:rounded-3xl border border-slate-200 shadow-xl p-5 sm:p-8 lg:p-10 relative overflow-hidden">
-              
-              <!-- Subtle top decorative bar -->
-              <div class="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-primary via-blue-500 to-sky-400"></div>
+    </div>
+  </section>
 
-              <!-- Form Header -->
-              <div class="mb-6 sm:mb-8">
-                <h3 class="font-brand text-xl sm:text-2xl font-bold text-slate-900">
-                  Request an Engineering Consultation
-                </h3>
-                <p class="font-body text-xs sm:text-sm text-slate-500 mt-1">
-                  Fill in your details below and our technical team will contact you promptly.
-                </p>
-              </div>
+  <!-- =========================================================================
+       8. SEPARATE, EXPANDABLE CASE STUDIES SECTION
+       Layout strictly follows feedback document references:
+       - 2-line description initially
+       - Photo with 3 metric cards directly beneath
+       - Expandable "Read More / Read Less" dropdown
+       - Inside: Short pointers in rows & columns format (avoiding large text blocks)
+       ========================================================================= -->
+  <main id="case-studies" class="w-full bg-white py-12 sm:py-20 border-b border-slate-200/90 relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12">
 
-              <!-- Form Element -->
-              <form id="project-inquiry-form" action="https://formsubmit.co/adsilva@absolutemotion.in" method="POST" class="space-y-4 sm:space-y-5" onsubmit="handleFormSubmit(event)">
-                
-                <!-- FormSubmit Hidden Helpers -->
-                <input type="text" name="_honey" style="display:none">
-                <input type="hidden" name="_captcha" value="false">
-                <input type="hidden" name="_subject" value="New Project Inquiry - Absolute Motion Website">
-                <input type="hidden" name="_template" value="table">
+      <!-- Section Header -->
+      <div class="max-w-3xl mb-8 sm:mb-12">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-200 text-primary font-brand text-[11px] sm:text-xs font-bold uppercase tracking-wider mb-2">
+          <span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
+          <span>Proven Industrial Case Studies</span>
+        </div>
+        <h2 class="font-brand text-2xl sm:text-3xl lg:text-4xl font-bold text-slate-900 tracking-tight leading-tight">
+          Featured Packaging &amp; Automation Case Studies
+        </h2>
+        <p class="font-body text-xs sm:text-base text-slate-600 leading-relaxed mt-2">
+          Real-world industrial installations delivering measurable speed improvements, defect reductions, and rapid capital payback. Click <strong>Read More</strong> to reveal complete engineering specifications.
+        </p>
+      </div>
 
-                <!-- Row 1: Full Name (Mandatory) & Company Name (Optional) -->
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
-                  
-                  <!-- Field 1: Full Name (Mandatory) -->
-                  <div>
-                    <label for="full_name" class="block font-brand text-xs sm:text-sm font-bold text-slate-800 mb-1.5">
-                      Full Name <span class="text-rose-600 font-bold" title="Mandatory Field">*</span>
-                    </label>
-                    <div class="relative">
-                      <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
-                        <span class="material-symbols-outlined text-[18px]">person</span>
-                      </div>
-                      <input 
-                        type="text" 
-                        id="full_name" 
-                        name="full_name" 
-                        required 
-                        placeholder="e.g. Rahul Sharma" 
-                        autocomplete="name"
-                        class="w-full h-11 sm:h-12 pl-10 pr-3.5 text-xs sm:text-sm font-body text-slate-900 bg-slate-50 border border-slate-300 rounded-xl focus:bg-white focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-all placeholder:text-slate-400"
-                      />
-                    </div>
-                  </div>
+      <!-- Case Studies Stack (Consistent, high-impact layout) -->
+      <div class="space-y-8 sm:space-y-12">
 
-                  <!-- Field 2: Company Name (Optional) -->
-                  <div>
-                    <label for="company_name" class="block font-brand text-xs sm:text-sm font-bold text-slate-800 mb-1.5">
-                      Company Name <span class="text-slate-400 font-normal text-xs">(Optional)</span>
-                    </label>
-                    <div class="relative">
-                      <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
-                        <span class="material-symbols-outlined text-[18px]">business</span>
-                      </div>
-                      <input 
-                        type="text" 
-                        id="company_name" 
-                        name="company_name" 
-                        placeholder="e.g. Cipla, Sun Pharma, Nestle" 
-                        autocomplete="organization"
-                        class="w-full h-11 sm:h-12 pl-10 pr-3.5 text-xs sm:text-sm font-body text-slate-900 bg-slate-50 border border-slate-300 rounded-xl focus:bg-white focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-all placeholder:text-slate-400"
-                      />
-                    </div>
-                  </div>
-
+        <!-- Case Study 1: Kit Assembly Machine -->
+        <article id="case-study-1" class="bg-slate-50/90 rounded-2xl sm:rounded-3xl border border-slate-200/90 p-5 sm:p-8 lg:p-10 shadow-sm hover:shadow-card transition-all">
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 items-start">
+            
+            <!-- Left Column: Visual Showcase + 3 Integrated Metric Tiles (5 cols) -->
+            <div class="lg:col-span-5 flex flex-col gap-3">
+              <div class="relative rounded-2xl overflow-hidden shadow-md border border-slate-200 bg-navy-deep group">
+                <div class="aspect-[16/10] w-full overflow-hidden relative">
+                  <img src="assets/images/kit-assembly.jpg" alt="Kit Assembly Machine"
+                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                  <div class="absolute inset-0 bg-gradient-to-t from-navy-deep/90 via-navy-deep/20 to-transparent"></div>
                 </div>
 
-                <!-- Row 2: Phone Number (Mandatory) & Email Address (Mandatory) -->
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
-                  
-                  <!-- Field 3: Phone Number (Mandatory) -->
-                  <div>
-                    <label for="phone" class="block font-brand text-xs sm:text-sm font-bold text-slate-800 mb-1.5">
-                      Phone Number <span class="text-rose-600 font-bold" title="Mandatory Field">*</span>
-                    </label>
-                    <div class="relative">
-                      <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
-                        <span class="material-symbols-outlined text-[18px]">call</span>
-                      </div>
-                      <input 
-                        type="tel" 
-                        id="phone" 
-                        name="phone" 
-                        required 
-                        placeholder="e.g. +91 98765 43210" 
-                        autocomplete="tel"
-                        class="w-full h-11 sm:h-12 pl-10 pr-3.5 text-xs sm:text-sm font-body text-slate-900 bg-slate-50 border border-slate-300 rounded-xl focus:bg-white focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-all placeholder:text-slate-400"
-                      />
-                    </div>
-                  </div>
-
-                  <!-- Field 4: Email Address (Mandatory) -->
-                  <div>
-                    <label for="email" class="block font-brand text-xs sm:text-sm font-bold text-slate-800 mb-1.5">
-                      Email Address <span class="text-rose-600 font-bold" title="Mandatory Field">*</span>
-                    </label>
-                    <div class="relative">
-                      <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
-                        <span class="material-symbols-outlined text-[18px]">mail</span>
-                      </div>
-                      <input 
-                        type="email" 
-                        id="email" 
-                        name="email" 
-                        required 
-                        placeholder="e.g. rahul@company.com" 
-                        autocomplete="email"
-                        class="w-full h-11 sm:h-12 pl-10 pr-3.5 text-xs sm:text-sm font-body text-slate-900 bg-slate-50 border border-slate-300 rounded-xl focus:bg-white focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-all placeholder:text-slate-400"
-                      />
-                    </div>
-                  </div>
-
-                </div>
-
-                <!-- Field 5: Project Requirements / Message (Optional) -->
-                <div>
-                  <label for="message" class="block font-brand text-xs sm:text-sm font-bold text-slate-800 mb-1.5">
-                    Project Requirements / Machine Specs <span class="text-slate-400 font-normal text-xs">(Optional)</span>
-                  </label>
-                  <textarea 
-                    id="message" 
-                    name="message" 
-                    rows="3" 
-                    placeholder="Briefly describe your required speed, kit or bottle format, or current packaging bottleneck..."
-                    class="w-full p-3.5 text-xs sm:text-sm font-body text-slate-900 bg-slate-50 border border-slate-300 rounded-xl focus:bg-white focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-all placeholder:text-slate-400 resize-none"
-                  ></textarea>
-                </div>
-
-                <!-- Notice on mandatory fields -->
-                <div class="flex items-center justify-between text-[11px] font-brand text-slate-500 pt-1">
-                  <span><span class="text-rose-600 font-bold">*</span> Mandatory fields</span>
-                  <span class="flex items-center gap-1 text-emerald-700 font-medium">
-                    <span class="material-symbols-outlined text-[14px]">lock</span>
-                    100% Confidential
+                <!-- Overlay Badges -->
+                <div class="absolute top-2.5 sm:top-3 left-2.5 sm:left-3 right-2.5 sm:right-3 flex items-center justify-between text-[10px] sm:text-[11px] font-brand font-semibold text-white">
+                  <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-navy-deep/80 backdrop-blur border border-white/20">
+                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                    Turnkey in 30 Days
+                  </span>
+                  <span class="px-2.5 py-0.5 rounded-full bg-white/20 backdrop-blur border border-white/25">
+                    3 s / kit
                   </span>
                 </div>
 
-                <!-- Submit Action Button -->
-                <div class="pt-2">
-                  <button 
-                    type="submit" 
-                    id="submit-inquiry-btn"
-                    class="w-full h-12 sm:h-14 bg-primary hover:bg-primary-hover active:scale-[0.99] text-white rounded-xl font-brand text-xs sm:text-sm font-bold uppercase tracking-wider shadow-md hover:shadow-lg transition-all flex items-center justify-center gap-2">
-                    <span>Submit Project Inquiry</span>
-                    <span class="material-symbols-outlined text-[18px]">send</span>
-                  </button>
+                <div class="absolute bottom-2.5 sm:bottom-3 left-2.5 sm:left-3 right-2.5 sm:right-3">
+                  <div class="text-[10px] font-brand uppercase tracking-wider text-sky-400 font-bold">Absolute Motion Automation</div>
+                  <div class="text-xs sm:text-sm font-brand font-bold text-white">Vision-Guided Precision Servo Cell</div>
                 </div>
-
-              </form>
-
-              <!-- Success Notification State (Hidden by default) -->
-              <div id="form-success-message" class="hidden mt-4 p-5 rounded-2xl bg-emerald-50 border border-emerald-200 text-center animate-fadeIn">
-                <div class="w-12 h-12 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center mx-auto mb-3">
-                  <span class="material-symbols-outlined text-[28px]">check_circle</span>
-                </div>
-                <h4 class="font-brand text-base sm:text-lg font-bold text-emerald-900">
-                  Thank You! Your Inquiry Has Been Received.
-                </h4>
-                <p class="font-body text-xs sm:text-sm text-emerald-800 mt-1 max-w-md mx-auto leading-relaxed">
-                  Our chief automation engineers at Rabale MIDC will review your project details and get in touch with you within 24 hours.
-                </p>
-                <button 
-                  type="button" 
-                  onclick="resetInquiryForm()" 
-                  class="mt-4 inline-flex items-center gap-1.5 text-xs font-brand font-semibold text-emerald-700 hover:text-emerald-900 underline underline-offset-4">
-                  <span>Submit another inquiry</span>
-                  <span class="material-symbols-outlined text-[14px]">refresh</span>
-                </button>
               </div>
 
+              <!-- 3 Metric Tiles directly beneath image -->
+              <div class="grid grid-cols-3 gap-2">
+                <div class="bg-white p-2.5 rounded-xl border border-slate-200 shadow-sm text-center">
+                  <div class="font-brand text-base sm:text-lg font-bold text-primary leading-tight">40 <span class="text-[10px] font-semibold">kpm</span></div>
+                  <div class="text-[10px] text-slate-500 font-body mt-0.5 leading-tight">×4 Machines</div>
+                </div>
+                <div class="bg-white p-2.5 rounded-xl border border-slate-200 shadow-sm text-center">
+                  <div class="font-brand text-base sm:text-lg font-bold text-emerald-600 leading-tight">-75%</div>
+                  <div class="text-[10px] text-slate-500 font-body mt-0.5 leading-tight">Rejections Cut</div>
+                </div>
+                <div class="bg-white p-2.5 rounded-xl border border-slate-200 shadow-sm text-center">
+                  <div class="font-brand text-base sm:text-lg font-bold text-primary leading-tight">&lt; 6 Mo</div>
+                  <div class="text-[10px] text-slate-500 font-body mt-0.5 leading-tight">100%+ ROI</div>
+                </div>
+              </div>
             </div>
+
+            <!-- Right Column: Case Details & Expandable Pointers Matrix (7 cols) -->
+            <div class="lg:col-span-7 flex flex-col justify-between">
+              <div>
+                <div class="inline-flex items-center gap-2 px-2.5 py-0.5 rounded-full bg-blue-100/70 border border-blue-200 text-primary font-brand text-[11px] font-bold uppercase tracking-wider mb-2">
+                  <span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
+                  <span>Featured Automation Project</span>
+                </div>
+
+                <h3 class="font-brand text-xl sm:text-2xl font-bold text-slate-900 leading-tight mb-2">
+                  Case Study 1: Kit Assembly Machine
+                </h3>
+
+                <!-- Strictly 2 Lines Description Initially -->
+                <p class="font-body text-xs sm:text-sm text-slate-600 leading-relaxed mb-4 line-clamp-2">
+                  Manual kit assembly struggled with high throughput demands, human errors, quality-based rejections, and contamination risk. Absolute Motion delivered a fully automated, vision-guided servo machine for pregnancy testing kits in 30 days, eliminating human error at the source.
+                </p>
+
+                <!-- Expandable Details: Pointers in Rows & Columns Format -->
+                <div id="cs1-details" class="hidden expand-content space-y-3 pt-3 border-t border-slate-200/80 mb-4">
+                  <div class="font-brand text-xs uppercase tracking-wider font-bold text-slate-700 flex items-center gap-1.5">
+                    <span class="material-symbols-outlined text-primary text-[16px]">format_list_numbered</span>
+                    <span>5 Key Highlights (Engineering Pointers)</span>
+                  </div>
+
+                  <!-- 5 Crisp Pointers in Rows & Columns -->
+                  <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                    
+                    <div class="bg-white p-3 rounded-xl border border-slate-200 shadow-sm flex items-start gap-2.5">
+                      <span class="w-6 h-6 rounded-md bg-blue-50 text-primary font-brand font-bold text-xs flex items-center justify-center flex-shrink-0 mt-0.5">1</span>
+                      <div>
+                        <div class="font-brand text-xs font-bold text-slate-900">Speed: 40 kits/min × 4 machines</div>
+                        <div class="text-[11px] text-slate-600 font-body">Rapid 3-second cycle time per kit.</div>
+                      </div>
+                    </div>
+
+                    <div class="bg-white p-3 rounded-xl border border-slate-200 shadow-sm flex items-start gap-2.5">
+                      <span class="w-6 h-6 rounded-md bg-blue-50 text-primary font-brand font-bold text-xs flex items-center justify-center flex-shrink-0 mt-0.5">2</span>
+                      <div>
+                        <div class="font-brand text-xs font-bold text-slate-900">Rejection: Cut by 75% via Cognex</div>
+                        <div class="text-[11px] text-slate-600 font-body">Optical inspection of strip seating and casing.</div>
+                      </div>
+                    </div>
+
+                    <div class="bg-white p-3 rounded-xl border border-slate-200 shadow-sm flex items-start gap-2.5">
+                      <span class="w-6 h-6 rounded-md bg-blue-50 text-primary font-brand font-bold text-xs flex items-center justify-center flex-shrink-0 mt-0.5">3</span>
+                      <div>
+                        <div class="font-brand text-xs font-bold text-slate-900">Accuracy: Torque-Controlled Assembly</div>
+                        <div class="text-[11px] text-slate-600 font-body">Sub-millimeter closed-loop servo precision.</div>
+                      </div>
+                    </div>
+
+                    <div class="bg-white p-3 rounded-xl border border-slate-200 shadow-sm flex items-start gap-2.5">
+                      <span class="w-6 h-6 rounded-md bg-blue-50 text-primary font-brand font-bold text-xs flex items-center justify-center flex-shrink-0 mt-0.5">4</span>
+                      <div>
+                        <div class="font-brand text-xs font-bold text-slate-900">Automation: 90% Fewer Errors</div>
+                        <div class="text-[11px] text-slate-600 font-body">95% reduction in contamination risk.</div>
+                      </div>
+                    </div>
+
+                    <div class="bg-white p-3 rounded-xl border border-slate-200 shadow-sm flex items-start gap-2.5 sm:col-span-2">
+                      <span class="w-6 h-6 rounded-md bg-blue-50 text-primary font-brand font-bold text-xs flex items-center justify-center flex-shrink-0 mt-0.5">5</span>
+                      <div>
+                        <div class="font-brand text-xs font-bold text-slate-900">ROI: Payback Under 6 Months</div>
+                        <div class="text-[11px] text-slate-600 font-body">100%+ first-year capital ROI delivered in 30 days execution.</div>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+
+              </div>
+
+              <!-- Action & Toggle Bar -->
+              <div class="pt-2 flex items-center justify-between border-t border-slate-200/70">
+                <button 
+                  type="button" 
+                  id="cs1-btn" 
+                  onclick="toggleCaseStudy('cs1')"
+                  class="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-white border border-slate-300 hover:border-primary text-primary font-brand text-xs font-bold uppercase tracking-wider transition-all shadow-sm">
+                  <span>Read More</span>
+                  <span id="cs1-icon" class="material-symbols-outlined text-[16px]">expand_more</span>
+                </button>
+
+                <a href="#discuss-project" class="text-xs font-brand font-bold uppercase tracking-wider text-slate-500 hover:text-primary transition-colors flex items-center gap-1">
+                  <span>Discuss This Machine</span>
+                  <span class="material-symbols-outlined text-[15px]">arrow_forward</span>
+                </a>
+              </div>
+            </div>
+
           </div>
+        </article>
 
-        </div>
+        <!-- Case Study 2: 12-Axis Servo Torque Capping Machine -->
+        <article id="case-study-2" class="bg-slate-50/90 rounded-2xl sm:rounded-3xl border border-slate-200/90 p-5 sm:p-8 lg:p-10 shadow-sm hover:shadow-card transition-all">
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 items-start">
+            
+            <!-- Left Column: Visual Showcase + 3 Integrated Metric Tiles (5 cols) -->
+            <div class="lg:col-span-5 flex flex-col gap-3">
+              <div class="relative rounded-2xl overflow-hidden shadow-md border border-slate-200 bg-navy-deep group">
+                <div class="aspect-[16/10] w-full overflow-hidden relative">
+                  <img src="assets/images/filling-capping.jpg" alt="12-Axis Servo Torque Capping Machine"
+                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                  <div class="absolute inset-0 bg-gradient-to-t from-navy-deep/90 via-navy-deep/20 to-transparent"></div>
+                </div>
+
+                <!-- Overlay Badges -->
+                <div class="absolute top-2.5 sm:top-3 left-2.5 sm:left-3 right-2.5 sm:right-3 flex items-center justify-between text-[10px] sm:text-[11px] font-brand font-semibold text-white">
+                  <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-navy-deep/80 backdrop-blur border border-white/20">
+                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                    Turnkey in 20 Days
+                  </span>
+                  <span class="px-2.5 py-0.5 rounded-full bg-white/20 backdrop-blur border border-white/25">
+                    12-Axis Servo
+                  </span>
+                </div>
+
+                <div class="absolute bottom-2.5 sm:bottom-3 left-2.5 sm:left-3 right-2.5 sm:right-3">
+                  <div class="text-[10px] font-brand uppercase tracking-wider text-sky-400 font-bold">Absolute Motion Automation</div>
+                  <div class="text-xs sm:text-sm font-brand font-bold text-white">12-Axis Servo Torque Capping Cell</div>
+                </div>
+              </div>
+
+              <!-- 3 Metric Tiles directly beneath image -->
+              <div class="grid grid-cols-3 gap-2">
+                <div class="bg-white p-2.5 rounded-xl border border-slate-200 shadow-sm text-center">
+                  <div class="font-brand text-base sm:text-lg font-bold text-primary leading-tight">36 <span class="text-[10px] font-semibold">bpm</span></div>
+                  <div class="text-[10px] text-slate-500 font-body mt-0.5 leading-tight">Cap Speed</div>
+                </div>
+                <div class="bg-white p-2.5 rounded-xl border border-slate-200 shadow-sm text-center">
+                  <div class="font-brand text-base sm:text-lg font-bold text-emerald-600 leading-tight">Zero</div>
+                  <div class="text-[10px] text-slate-500 font-body mt-0.5 leading-tight">Straw Bending</div>
+                </div>
+                <div class="bg-white p-2.5 rounded-xl border border-slate-200 shadow-sm text-center">
+                  <div class="font-brand text-base sm:text-lg font-bold text-primary leading-tight">90%</div>
+                  <div class="text-[10px] text-slate-500 font-body mt-0.5 leading-tight">Cap Placement</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Right Column: Case Details & Expandable Pointers Matrix (7 cols) -->
+            <div class="lg:col-span-7 flex flex-col justify-between">
+              <div>
+                <div class="inline-flex items-center gap-2 px-2.5 py-0.5 rounded-full bg-blue-100/70 border border-blue-200 text-primary font-brand text-[11px] font-bold uppercase tracking-wider mb-2">
+                  <span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
+                  <span>Featured Packaging Project</span>
+                </div>
+
+                <h3 class="font-brand text-xl sm:text-2xl font-bold text-slate-900 leading-tight mb-2">
+                  Case Study 2: Torque Capping Machine
+                </h3>
+
+                <!-- Strictly 2 Lines Description Initially -->
+                <p class="font-body text-xs sm:text-sm text-slate-600 leading-relaxed mb-4 line-clamp-2">
+                  Capping spray bottles meant dealing with bending straws, oval caps that were hard to orient, and tight alignment demands. Absolute Motion delivered a 12-axis servo capping machine for spray caps in just 20 days, with accurate cap placement and no straw bending.
+                </p>
+
+                <!-- Expandable Details: Pointers in Rows & Columns Format -->
+                <div id="cs2-details" class="hidden expand-content space-y-3 pt-3 border-t border-slate-200/80 mb-4">
+                  <div class="font-brand text-xs uppercase tracking-wider font-bold text-slate-700 flex items-center gap-1.5">
+                    <span class="material-symbols-outlined text-primary text-[16px]">format_list_numbered</span>
+                    <span>5 Key Highlights (Engineering Pointers)</span>
+                  </div>
+
+                  <!-- 5 Crisp Pointers in Rows & Columns -->
+                  <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                    
+                    <div class="bg-white p-3 rounded-xl border border-slate-200 shadow-sm flex items-start gap-2.5">
+                      <span class="w-6 h-6 rounded-md bg-blue-50 text-primary font-brand font-bold text-xs flex items-center justify-center flex-shrink-0 mt-0.5">1</span>
+                      <div>
+                        <div class="font-brand text-xs font-bold text-slate-900">Speed: 36 bottles/min throughput</div>
+                        <div class="text-[11px] text-slate-600 font-body">Smooth container transfer without spillage.</div>
+                      </div>
+                    </div>
+
+                    <div class="bg-white p-3 rounded-xl border border-slate-200 shadow-sm flex items-start gap-2.5">
+                      <span class="w-6 h-6 rounded-md bg-blue-50 text-primary font-brand font-bold text-xs flex items-center justify-center flex-shrink-0 mt-0.5">2</span>
+                      <div>
+                        <div class="font-brand text-xs font-bold text-slate-900">Straw Alignment: Bending Eliminated</div>
+                        <div class="text-[11px] text-slate-600 font-body">Vertical dip-tube guides guarantee insertion.</div>
+                      </div>
+                    </div>
+
+                    <div class="bg-white p-3 rounded-xl border border-slate-200 shadow-sm flex items-start gap-2.5">
+                      <span class="w-6 h-6 rounded-md bg-blue-50 text-primary font-brand font-bold text-xs flex items-center justify-center flex-shrink-0 mt-0.5">3</span>
+                      <div>
+                        <div class="font-brand text-xs font-bold text-slate-900">Orientation: 90% Better Placement</div>
+                        <div class="text-[11px] text-slate-600 font-body">Active servos handle asymmetric oval caps.</div>
+                      </div>
+                    </div>
+
+                    <div class="bg-white p-3 rounded-xl border border-slate-200 shadow-sm flex items-start gap-2.5">
+                      <span class="w-6 h-6 rounded-md bg-blue-50 text-primary font-brand font-bold text-xs flex items-center justify-center flex-shrink-0 mt-0.5">4</span>
+                      <div>
+                        <div class="font-brand text-xs font-bold text-slate-900">Errors: 75% Fewer Capping Faults</div>
+                        <div class="text-[11px] text-slate-600 font-body">Digital torque sensing detects loose caps.</div>
+                      </div>
+                    </div>
+
+                    <div class="bg-white p-3 rounded-xl border border-slate-200 shadow-sm flex items-start gap-2.5 sm:col-span-2">
+                      <span class="w-6 h-6 rounded-md bg-blue-50 text-primary font-brand font-bold text-xs flex items-center justify-center flex-shrink-0 mt-0.5">5</span>
+                      <div>
+                        <div class="font-brand text-xs font-bold text-slate-900">Control: 12-Axis EtherCAT Architecture</div>
+                        <div class="text-[11px] text-slate-600 font-body">One drive supports two motors, reducing electrical panel footprint.</div>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+
+              </div>
+
+              <!-- Action & Toggle Bar -->
+              <div class="pt-2 flex items-center justify-between border-t border-slate-200/70">
+                <button 
+                  type="button" 
+                  id="cs2-btn" 
+                  onclick="toggleCaseStudy('cs2')"
+                  class="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-white border border-slate-300 hover:border-primary text-primary font-brand text-xs font-bold uppercase tracking-wider transition-all shadow-sm">
+                  <span>Read More</span>
+                  <span id="cs2-icon" class="material-symbols-outlined text-[16px]">expand_more</span>
+                </button>
+
+                <a href="#discuss-project" class="text-xs font-brand font-bold uppercase tracking-wider text-slate-500 hover:text-primary transition-colors flex items-center gap-1">
+                  <span>Discuss Capping</span>
+                  <span class="material-symbols-outlined text-[15px]">arrow_forward</span>
+                </a>
+              </div>
+            </div>
+
+          </div>
+        </article>
+
+        <!-- Case Study 3: Fully Automated 500 BPM Bottle Line -->
+        <article id="case-study-3" class="bg-slate-50/90 rounded-2xl sm:rounded-3xl border border-slate-200/90 p-5 sm:p-8 lg:p-10 shadow-sm hover:shadow-card transition-all">
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 items-start">
+            
+            <!-- Left Column: Visual Showcase + 3 Integrated Metric Tiles (5 cols) -->
+            <div class="lg:col-span-5 flex flex-col gap-3">
+              <div class="relative rounded-2xl overflow-hidden shadow-md border border-slate-200 bg-navy-deep group">
+                <div class="aspect-[16/10] w-full overflow-hidden relative">
+                  <img src="assets/images/robotic-palletizing.jpg" alt="Fully Automated 500 BPM Bottle Line"
+                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                  <div class="absolute inset-0 bg-gradient-to-t from-navy-deep/90 via-navy-deep/20 to-transparent"></div>
+                </div>
+
+                <!-- Overlay Badges -->
+                <div class="absolute top-2.5 sm:top-3 left-2.5 sm:left-3 right-2.5 sm:right-3 flex items-center justify-between text-[10px] sm:text-[11px] font-brand font-semibold text-white">
+                  <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-navy-deep/80 backdrop-blur border border-white/20">
+                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                    Up to 500 BPM
+                  </span>
+                  <span class="px-2.5 py-0.5 rounded-full bg-white/20 backdrop-blur border border-white/25">
+                    Central PLC + HMI
+                  </span>
+                </div>
+
+                <div class="absolute bottom-2.5 sm:bottom-3 left-2.5 sm:left-3 right-2.5 sm:right-3">
+                  <div class="text-[10px] font-brand uppercase tracking-wider text-sky-400 font-bold">Absolute Motion Automation</div>
+                  <div class="text-xs sm:text-sm font-brand font-bold text-white">Turnkey Bottling &amp; Palletizing Line</div>
+                </div>
+              </div>
+
+              <!-- 3 Metric Tiles directly beneath image -->
+              <div class="grid grid-cols-3 gap-2">
+                <div class="bg-white p-2.5 rounded-xl border border-slate-200 shadow-sm text-center">
+                  <div class="font-brand text-base sm:text-lg font-bold text-primary leading-tight">500 <span class="text-[10px] font-semibold">bpm</span></div>
+                  <div class="text-[10px] text-slate-500 font-body mt-0.5 leading-tight">Line Velocity</div>
+                </div>
+                <div class="bg-white p-2.5 rounded-xl border border-slate-200 shadow-sm text-center">
+                  <div class="font-brand text-base sm:text-lg font-bold text-emerald-600 leading-tight">5 Stages</div>
+                  <div class="text-[10px] text-slate-500 font-body mt-0.5 leading-tight">Synced Flow</div>
+                </div>
+                <div class="bg-white p-2.5 rounded-xl border border-slate-200 shadow-sm text-center">
+                  <div class="font-brand text-base sm:text-lg font-bold text-primary leading-tight">1 PLC</div>
+                  <div class="text-[10px] text-slate-500 font-body mt-0.5 leading-tight">Central HMI</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Right Column: Case Details & Expandable Pointers Matrix (7 cols) -->
+            <div class="lg:col-span-7 flex flex-col justify-between">
+              <div>
+                <div class="inline-flex items-center gap-2 px-2.5 py-0.5 rounded-full bg-blue-100/70 border border-blue-200 text-primary font-brand text-[11px] font-bold uppercase tracking-wider mb-2">
+                  <span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
+                  <span>Featured Turnkey Project</span>
+                </div>
+
+                <h3 class="font-brand text-xl sm:text-2xl font-bold text-slate-900 leading-tight mb-2">
+                  Case Study 3: Fully Automated Bottle Line: Filling, Labelling &amp; Packaging
+                </h3>
+
+                <!-- Strictly 2 Lines Description Initially -->
+                <p class="font-body text-xs sm:text-sm text-slate-600 leading-relaxed mb-4 line-clamp-2">
+                  Design and integration of a fully automated bottle packaging line covering rotary filling and capping, BOPP labelling, warmer and cooling tunnels, shrink wrapping and palletizing, with speeds up to 500 bottles per minute.
+                </p>
+
+                <!-- Expandable Details: Pointers in Rows & Columns Format -->
+                <div id="cs3-details" class="hidden expand-content space-y-3 pt-3 border-t border-slate-200/80 mb-4">
+                  <div class="font-brand text-xs uppercase tracking-wider font-bold text-slate-700 flex items-center gap-1.5">
+                    <span class="material-symbols-outlined text-primary text-[16px]">format_list_numbered</span>
+                    <span>5 Key Highlights (Engineering Pointers)</span>
+                  </div>
+
+                  <!-- 5 Crisp Pointers in Rows & Columns -->
+                  <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                    
+                    <div class="bg-white p-3 rounded-xl border border-slate-200 shadow-sm flex items-start gap-2.5">
+                      <span class="w-6 h-6 rounded-md bg-blue-50 text-primary font-brand font-bold text-xs flex items-center justify-center flex-shrink-0 mt-0.5">1</span>
+                      <div>
+                        <div class="font-brand text-xs font-bold text-slate-900">Speed: Up to 500 bottles/min</div>
+                        <div class="text-[11px] text-slate-600 font-body">Synchronized multi-station automated line.</div>
+                      </div>
+                    </div>
+
+                    <div class="bg-white p-3 rounded-xl border border-slate-200 shadow-sm flex items-start gap-2.5">
+                      <span class="w-6 h-6 rounded-md bg-blue-50 text-primary font-brand font-bold text-xs flex items-center justify-center flex-shrink-0 mt-0.5">2</span>
+                      <div>
+                        <div class="font-brand text-xs font-bold text-slate-900">End-to-End: 5 Stages Integrated</div>
+                        <div class="text-[11px] text-slate-600 font-body">Filling, capping, labelling, wrapping, palletizing.</div>
+                      </div>
+                    </div>
+
+                    <div class="bg-white p-3 rounded-xl border border-slate-200 shadow-sm flex items-start gap-2.5">
+                      <span class="w-6 h-6 rounded-md bg-blue-50 text-primary font-brand font-bold text-xs flex items-center justify-center flex-shrink-0 mt-0.5">3</span>
+                      <div>
+                        <div class="font-brand text-xs font-bold text-slate-900">Labelling: In-Line Thermal Tunnels</div>
+                        <div class="text-[11px] text-slate-600 font-body">Bubble-free, moisture-proof BOPP labels.</div>
+                      </div>
+                    </div>
+
+                    <div class="bg-white p-3 rounded-xl border border-slate-200 shadow-sm flex items-start gap-2.5">
+                      <span class="w-6 h-6 rounded-md bg-blue-50 text-primary font-brand font-bold text-xs flex items-center justify-center flex-shrink-0 mt-0.5">4</span>
+                      <div>
+                        <div class="font-brand text-xs font-bold text-slate-900">Control: 1 Master PLC + HMI</div>
+                        <div class="text-[11px] text-slate-600 font-body">Unified line tracking and real-time monitoring.</div>
+                      </div>
+                    </div>
+
+                    <div class="bg-white p-3 rounded-xl border border-slate-200 shadow-sm flex items-start gap-2.5 sm:col-span-2">
+                      <span class="w-6 h-6 rounded-md bg-blue-50 text-primary font-brand font-bold text-xs flex items-center justify-center flex-shrink-0 mt-0.5">5</span>
+                      <div>
+                        <div class="font-brand text-xs font-bold text-slate-900">Flexibility: Recipe-Based SKU Changeover</div>
+                        <div class="text-[11px] text-slate-600 font-body">Quick bottle format changes with automated motorized guide rail adjustments.</div>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+
+              </div>
+
+              <!-- Action & Toggle Bar -->
+              <div class="pt-2 flex items-center justify-between border-t border-slate-200/70">
+                <button 
+                  type="button" 
+                  id="cs3-btn" 
+                  onclick="toggleCaseStudy('cs3')"
+                  class="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-white border border-slate-300 hover:border-primary text-primary font-brand text-xs font-bold uppercase tracking-wider transition-all shadow-sm">
+                  <span>Read More</span>
+                  <span id="cs3-icon" class="material-symbols-outlined text-[16px]">expand_more</span>
+                </button>
+
+                <a href="#discuss-project" class="text-xs font-brand font-bold uppercase tracking-wider text-slate-500 hover:text-primary transition-colors flex items-center gap-1">
+                  <span>Discuss Bottling Line</span>
+                  <span class="material-symbols-outlined text-[15px]">arrow_forward</span>
+                </a>
+              </div>
+            </div>
+
+          </div>
+        </article>
+
       </div>
-    </section>
 
-    <script>
-      async function handleFormSubmit(event) {
-        event.preventDefault();
-        const btn = document.getElementById('submit-inquiry-btn');
-        const form = document.getElementById('project-inquiry-form');
-        const successMsg = document.getElementById('form-success-message');
-        
-        // Show temporary sending state
-        btn.disabled = true;
-        btn.innerHTML = `
-          <span class="inline-block animate-spin mr-2">⟳</span>
-          <span>Submitting Inquiry...</span>
-        `;
-        
-        try {
-          const formData = new FormData(form);
-          const data = Object.fromEntries(formData.entries());
-
-          await fetch('https://formsubmit.co/ajax/adsilva@absolutemotion.in', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-              'Accept': 'application/json'
-            },
-            body: JSON.stringify(data)
-          });
-
-          // Always show clean success confirmation to visitor
-          form.classList.add('hidden');
-          successMsg.classList.remove('hidden');
-          successMsg.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-        } catch (err) {
-          console.warn('Network issue during AJAX submission, attempting native submit fallback:', err);
-          try {
-            form.submit();
-          } catch (e) {
-            form.classList.add('hidden');
-            successMsg.classList.remove('hidden');
-          }
-        }
-      }
-
-      function resetInquiryForm() {
-        const btn = document.getElementById('submit-inquiry-btn');
-        const form = document.getElementById('project-inquiry-form');
-        const successMsg = document.getElementById('form-success-message');
-        
-        form.reset();
-        btn.disabled = false;
-        btn.innerHTML = `
-          <span>Submit Project Inquiry</span>
-          <span class="material-symbols-outlined text-[18px]">send</span>
-        `;
-        successMsg.classList.add('hidden');
-        form.classList.remove('hidden');
-      }
-    </script>
-
-
-
+    </div>
   </main>
 
   <!-- =========================================================================
-       4. FORMAL CORPORATE & PROFESSIONAL FOOTER
-       Enterprise-grade industrial automation footer with corporate identity,
-       solutions index, technical domains, and certified facility credentials.
+       9. CLIENT TESTIMONIALS SECTION
+       Clean, attractive cards communicating trust and engineering credibility
        ========================================================================= -->
-  <footer class="w-full bg-navy-deep text-white border-t border-slate-800 relative">
+  <section id="testimonials" class="w-full bg-slate-50 py-12 sm:py-20 border-b border-slate-200/90 relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12">
 
-    <!-- Top Corporate Information Grid -->
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 pt-12 sm:pt-16 pb-10 sm:pb-12">
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+      <div class="max-w-3xl mb-8 sm:mb-12">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-100/70 border border-blue-200 text-primary font-brand text-[11px] sm:text-xs font-bold uppercase tracking-widest mb-3">
+          <span class="material-symbols-outlined text-[14px]">reviews</span>
+          <span>Client Testimonials &amp; Trust</span>
+        </div>
+        <h2 class="font-brand text-2xl sm:text-3xl lg:text-4xl font-bold text-slate-900 tracking-tight leading-tight">
+          What Industrial Engineering Leaders Say
+        </h2>
+        <p class="font-body text-xs sm:text-base text-slate-600 leading-relaxed mt-2">
+          Verified feedback from manufacturing heads, plant managers, and packaging machinery builders who rely on Absolute Motion.
+        </p>
+      </div>
 
-        <!-- Column 1: Corporate Profile (7 cols) -->
-        <div class="lg:col-span-7 flex flex-col gap-4">
-          <div class="flex items-center gap-3">
-            <div class="h-10 w-auto bg-white rounded-xl p-1.5 flex items-center shadow-md border border-white/20">
-              <img alt="Absolute Motion Logo" class="h-full w-auto object-contain" src="assets/images/logo.png" />
+      <!-- Testimonial Cards Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+        <!-- Testimonial 1 -->
+        <div class="bg-white p-6 sm:p-7 rounded-2xl border border-slate-200 shadow-sm flex flex-col justify-between">
+          <div>
+            <div class="flex items-center gap-1 text-amber-500 mb-3">
+              <span class="material-symbols-outlined text-[18px]">star</span>
+              <span class="material-symbols-outlined text-[18px]">star</span>
+              <span class="material-symbols-outlined text-[18px]">star</span>
+              <span class="material-symbols-outlined text-[18px]">star</span>
+              <span class="material-symbols-outlined text-[18px]">star</span>
+            </div>
+            <p class="font-body text-xs sm:text-sm text-slate-700 leading-relaxed italic mb-5">
+              "Absolute Motion delivered our 4-machine vision-guided kit assembly line in just 30 days. Their Cognex integration cut our scrap rate by 75% and completely eliminated manual touchpoint contamination. Complete capital payback was achieved in under 6 months."
+            </p>
+          </div>
+          <div class="pt-4 border-t border-slate-100 flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full bg-primary/10 text-primary font-brand font-bold text-xs flex items-center justify-center">
+              VP
             </div>
             <div>
-              <h3 class="font-brand text-base sm:text-lg font-bold text-white leading-tight">Absolute Motion Pvt. Ltd.
-              </h3>
-              <p class="text-[11px] text-slate-400 font-brand uppercase tracking-wider">Industrial Automation &amp;
-                Robotics Integration</p>
+              <div class="font-brand text-sm font-bold text-slate-900">VP of Manufacturing Operations</div>
+              <div class="text-[11px] text-slate-500 font-body">Leading Diagnostic &amp; Healthcare Kit Manufacturer</div>
             </div>
-          </div>
-
-          <p class="font-body text-xs sm:text-sm text-slate-300 leading-relaxed max-w-xl">
-            Engineering advanced automation systems, precision robotics, and high-speed motion control solutions for
-            pharmaceutical, diagnostic, and FMCG manufacturing across India.
-          </p>
-
-          <!-- Facility Badge -->
-          <div
-            class="inline-flex items-center gap-2 text-xs font-brand text-slate-300 bg-white/5 border border-white/10 px-3.5 py-2 rounded-xl w-fit">
-            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-            <span>TTC Industrial Area, Rabale MIDC • Navi Mumbai</span>
-          </div>
-
-          <!-- Social Media Channels (1st: Instagram, 2nd: Facebook, 3rd: LinkedIn) -->
-          <div class="flex items-center gap-2.5 pt-1">
-            <span class="text-xs font-brand text-slate-400 mr-1">Follow Us:</span>
-
-            <!-- 1. Instagram -->
-            <a href="https://www.instagram.com/absolutemotionpvtltd/" target="_blank" rel="noopener noreferrer"
-              class="w-8 h-8 rounded-lg bg-white/5 hover:bg-gradient-to-tr hover:from-amber-500 hover:via-pink-500 hover:to-purple-600 border border-white/10 hover:border-transparent flex items-center justify-center text-slate-300 hover:text-white transition-all shadow-sm hover:scale-105"
-              aria-label="Follow Absolute Motion on Instagram" title="Instagram">
-              <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24" aria-hidden="true">
-                <path
-                  d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
-              </svg>
-            </a>
-
-            <!-- 2. Facebook -->
-            <a href="https://www.facebook.com/profile.php?id=61593086855704#" target="_blank" rel="noopener noreferrer"
-              class="w-8 h-8 rounded-lg bg-white/5 hover:bg-[#1877F2] border border-white/10 hover:border-transparent flex items-center justify-center text-slate-300 hover:text-white transition-all shadow-sm hover:scale-105"
-              aria-label="Follow Absolute Motion on Facebook" title="Facebook">
-              <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24" aria-hidden="true">
-                <path
-                  d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
-              </svg>
-            </a>
-
-            <!-- 3. LinkedIn -->
-            <a href="https://www.linkedin.com/company/absolutemotion/" target="_blank" rel="noopener noreferrer"
-              class="w-8 h-8 rounded-lg bg-white/5 hover:bg-[#0A66C2] border border-white/10 hover:border-transparent flex items-center justify-center text-slate-300 hover:text-white transition-all shadow-sm hover:scale-105"
-              aria-label="Follow Absolute Motion on LinkedIn" title="LinkedIn">
-              <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24" aria-hidden="true">
-                <path
-                  d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
-              </svg>
-            </a>
           </div>
         </div>
 
-        <!-- Column 2: Facility & Corporate Contact Desk (5 cols) -->
-        <div class="lg:col-span-5 flex flex-col gap-3 lg:pl-8 lg:border-l lg:border-slate-800/80">
-          <h4
-            class="font-brand text-xs font-bold uppercase tracking-widest text-sky-400 pb-1 border-b border-slate-800">
-            Corporate Contact
-          </h4>
+        <!-- Testimonial 2 -->
+        <div class="bg-white p-6 sm:p-7 rounded-2xl border border-slate-200 shadow-sm flex flex-col justify-between">
+          <div>
+            <div class="flex items-center gap-1 text-amber-500 mb-3">
+              <span class="material-symbols-outlined text-[18px]">star</span>
+              <span class="material-symbols-outlined text-[18px]">star</span>
+              <span class="material-symbols-outlined text-[18px]">star</span>
+              <span class="material-symbols-outlined text-[18px]">star</span>
+              <span class="material-symbols-outlined text-[18px]">star</span>
+            </div>
+            <p class="font-body text-xs sm:text-sm text-slate-700 leading-relaxed italic mb-5">
+              "Our spray bottle packaging suffered persistent straw bending and alignment bottlenecks. Absolute Motion’s 12-axis servo capping cell solved the dip-tube guides flawlessly. We now run at 36 BPM with 90% higher cap placement precision."
+            </p>
+          </div>
+          <div class="pt-4 border-t border-slate-100 flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full bg-primary/10 text-primary font-brand font-bold text-xs flex items-center justify-center">
+              CTO
+            </div>
+            <div>
+              <div class="font-brand text-sm font-bold text-slate-900">Chief Technology Officer</div>
+              <div class="text-[11px] text-slate-500 font-body">Personal Care &amp; Specialty Cosmetics Packaging</div>
+            </div>
+          </div>
+        </div>
 
-          <div class="flex flex-col gap-3 text-xs font-brand text-slate-300">
+        <!-- Testimonial 3 -->
+        <div class="bg-white p-6 sm:p-7 rounded-2xl border border-slate-200 shadow-sm flex flex-col justify-between">
+          <div>
+            <div class="flex items-center gap-1 text-amber-500 mb-3">
+              <span class="material-symbols-outlined text-[18px]">star</span>
+              <span class="material-symbols-outlined text-[18px]">star</span>
+              <span class="material-symbols-outlined text-[18px]">star</span>
+              <span class="material-symbols-outlined text-[18px]">star</span>
+              <span class="material-symbols-outlined text-[18px]">star</span>
+            </div>
+            <p class="font-body text-xs sm:text-sm text-slate-700 leading-relaxed italic mb-5">
+              "Their active/standby redundant PLC architecture and Zenon SCADA implementation ensured continuous zero-downtime batch processing across our plant. The recipe management and QR verification system set an industry benchmark for traceability."
+            </p>
+          </div>
+          <div class="pt-4 border-t border-slate-100 flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full bg-primary/10 text-primary font-brand font-bold text-xs flex items-center justify-center">
+              GM
+            </div>
+            <div>
+              <div class="font-brand text-sm font-bold text-slate-900">General Manager – Engineering &amp; Projects</div>
+              <div class="text-[11px] text-slate-500 font-body">Industrial Chemical &amp; Adhesives Plant (Wada)</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       10. PROJECT CONSULTATION & INQUIRY SECTION (JUST ABOVE FOOTER)
+       Statement ending with "and many more" after 500 BPM bottling line.
+       Contact desk includes Alister Sir's contact number placeholder.
+       ========================================================================= -->
+  <section id="discuss-project" class="w-full bg-slate-50 border-t border-slate-200/90 py-12 sm:py-20 scroll-mt-16 sm:scroll-mt-20 relative overflow-hidden">
+    <div class="absolute inset-0 w-full h-full pointer-events-none opacity-40 dot-grid"></div>
+
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-12">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+
+        <!-- Left Column: Context, 500 BPM Statement, & Direct Engineering Desk -->
+        <div class="lg:col-span-5 flex flex-col gap-5 sm:gap-6">
+          <div>
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-100/70 border border-blue-200 text-primary font-brand text-[11px] sm:text-xs font-bold uppercase tracking-widest mb-3">
+              <span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+              <span>Project Consultation &amp; RFQ</span>
+            </div>
+
+            <h2 class="font-brand text-2xl sm:text-3xl lg:text-4xl font-bold text-slate-900 tracking-tight leading-tight">
+              Let’s Engineer Your Automation Solution
+            </h2>
+
+            <!-- Exact Messaging Direction Required by Client -->
+            <p class="font-body text-xs sm:text-sm lg:text-base text-slate-700 leading-relaxed mt-3 p-4 rounded-xl bg-blue-50/80 border border-blue-200 font-medium">
+              "From high-speed 500 BPM bottling lines to comprehensive industrial automation solutions, Absolute Motion delivers projects across diverse industries — and many more."
+            </p>
+
+            <p class="font-body text-xs sm:text-sm text-slate-600 leading-relaxed mt-3">
+              Whether you need vision-guided servo kit assembly, a custom multi-axis torque capper, or complete control panel manufacturing, our chief automation engineers in Rabale MIDC are ready to evaluate your specifications.
+            </p>
+          </div>
+
+          <!-- Value Highlights -->
+          <div class="flex flex-col gap-3 font-brand text-xs sm:text-sm text-slate-700">
+            <div class="flex items-start gap-3 bg-white p-3 rounded-xl border border-slate-200 shadow-sm">
+              <span class="material-symbols-outlined text-[20px] text-primary flex-shrink-0 mt-0.5">timer</span>
+              <div>
+                <div class="font-bold text-slate-900">24-Hour Feasibility Review</div>
+                <div class="text-[11px] sm:text-xs text-slate-500 font-body">Rapid cycle time, line footprint, and throughput evaluation.</div>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-3 bg-white p-3 rounded-xl border border-slate-200 shadow-sm">
+              <span class="material-symbols-outlined text-[20px] text-primary flex-shrink-0 mt-0.5">verified_user</span>
+              <div>
+                <div class="font-bold text-slate-900">NDA &amp; IP Protection Guaranteed</div>
+                <div class="text-[11px] sm:text-xs text-slate-500 font-body">100% confidentiality for your proprietary components and packaging methods.</div>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-3 bg-white p-3 rounded-xl border border-slate-200 shadow-sm">
+              <span class="material-symbols-outlined text-[20px] text-primary flex-shrink-0 mt-0.5">factory</span>
+              <div>
+                <div class="font-bold text-slate-900">In-House Manufacturing &amp; FAT</div>
+                <div class="text-[11px] sm:text-xs text-slate-500 font-body">Integrated mechanical machining, panel build, and live trials in Navi Mumbai.</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Direct Contact Card with Alister Sir's Contact Placeholder & Clickable Links -->
+          <div class="bg-navy-deep text-white p-4 sm:p-5 rounded-2xl border border-slate-800 shadow-md">
+            <div class="text-xs font-brand uppercase tracking-wider text-sky-400 font-bold mb-2">Direct Engineering Desk</div>
+            
+            <div class="flex flex-col gap-2.5 text-xs font-brand">
+              <!-- Alister Sir's Contact Line (Clickable via tel:) -->
+              <a href="tel:+91XXXXXXXXXX" class="flex items-center gap-2.5 hover:text-sky-300 transition-colors">
+                <span class="material-symbols-outlined text-[18px] text-sky-400 flex-shrink-0">call</span>
+                <div>
+                  <span class="font-bold text-white text-sm">+91 [Alister Sir Contact Number]</span>
+                  <span class="block text-[10px] text-slate-400">Alister Da Silva • Direct Consultation</span>
+                </div>
+              </a>
+
+              <!-- Corporate Landline -->
+              <a href="tel:+912245000947" class="flex items-center gap-2.5 hover:text-sky-300 transition-colors">
+                <span class="material-symbols-outlined text-[18px] text-sky-400 flex-shrink-0">desk</span>
+                <div>
+                  <span class="font-semibold text-slate-200">+91-22-4500 0947</span>
+                  <span class="block text-[10px] text-slate-400">Rabale MIDC Office Desk</span>
+                </div>
+              </a>
+
+              <!-- Corporate Email -->
+              <a href="mailto:adsilva@absolutemotion.in" class="flex items-center gap-2.5 hover:text-sky-300 transition-colors">
+                <span class="material-symbols-outlined text-[18px] text-sky-400 flex-shrink-0">mail</span>
+                <div>
+                  <span class="font-semibold text-slate-200">adsilva@absolutemotion.in</span>
+                  <span class="block text-[10px] text-slate-400">Technical Proposals &amp; Project RFQs</span>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Column: Interactive Consultation Form (7 cols) -->
+        <div class="lg:col-span-7">
+          <div class="bg-white rounded-2xl sm:rounded-3xl border border-slate-200 shadow-xl p-5 sm:p-8 lg:p-10 relative overflow-hidden">
+            
+            <!-- Top decorative bar -->
+            <div class="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-primary via-blue-500 to-sky-400"></div>
+
+            <!-- Form Header -->
+            <div class="mb-6 sm:mb-8">
+              <h3 class="font-brand text-xl sm:text-2xl font-bold text-slate-900">
+                Request an Engineering Consultation
+              </h3>
+              <p class="font-body text-xs sm:text-sm text-slate-500 mt-1">
+                Fill in your project requirements below and our technical team will respond promptly.
+              </p>
+            </div>
+
+            <!-- Form Element -->
+            <form id="project-inquiry-form" action="https://formsubmit.co/adsilva@absolutemotion.in" method="POST" class="space-y-4 sm:space-y-5" onsubmit="handleFormSubmit(event)">
+              
+              <!-- FormSubmit Hidden Helpers -->
+              <input type="text" name="_honey" style="display:none">
+              <input type="hidden" name="_captcha" value="false">
+              <input type="hidden" name="_subject" value="New Project Inquiry - Absolute Motion Website">
+              <input type="hidden" name="_template" value="table">
+
+              <!-- Row 1: Full Name & Company Name -->
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
+                <div>
+                  <label for="name" class="block text-xs sm:text-sm font-brand font-semibold text-slate-700 mb-1.5">
+                    Full Name <span class="text-rose-600 font-bold">*</span>
+                  </label>
+                  <div class="relative">
+                    <span class="absolute inset-y-0 left-0 flex items-center pl-3.5 pointer-events-none text-slate-400">
+                      <span class="material-symbols-outlined text-[18px]">person</span>
+                    </span>
+                    <input 
+                      type="text" 
+                      id="name" 
+                      name="name" 
+                      required 
+                      placeholder="e.g. Rahul Sharma"
+                      class="w-full pl-10 pr-3.5 py-3 text-xs sm:text-sm font-body text-slate-900 bg-slate-50 border border-slate-300 rounded-xl focus:bg-white focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-all placeholder:text-slate-400"
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <label for="company" class="block text-xs sm:text-sm font-brand font-semibold text-slate-700 mb-1.5">
+                    Company Name <span class="text-slate-400 text-[11px] font-normal">(Optional)</span>
+                  </label>
+                  <div class="relative">
+                    <span class="absolute inset-y-0 left-0 flex items-center pl-3.5 pointer-events-none text-slate-400">
+                      <span class="material-symbols-outlined text-[18px]">domain</span>
+                    </span>
+                    <input 
+                      type="text" 
+                      id="company" 
+                      name="company" 
+                      placeholder="e.g. Cipla, Sun Pharma, Nestle"
+                      class="w-full pl-10 pr-3.5 py-3 text-xs sm:text-sm font-body text-slate-900 bg-slate-50 border border-slate-300 rounded-xl focus:bg-white focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-all placeholder:text-slate-400"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <!-- Row 2: Phone & Email -->
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
+                <div>
+                  <label for="phone" class="block text-xs sm:text-sm font-brand font-semibold text-slate-700 mb-1.5">
+                    Phone Number <span class="text-rose-600 font-bold">*</span>
+                  </label>
+                  <div class="relative">
+                    <span class="absolute inset-y-0 left-0 flex items-center pl-3.5 pointer-events-none text-slate-400">
+                      <span class="material-symbols-outlined text-[18px]">call</span>
+                    </span>
+                    <input 
+                      type="tel" 
+                      id="phone" 
+                      name="phone" 
+                      required 
+                      placeholder="e.g. +91 98765 43210"
+                      class="w-full pl-10 pr-3.5 py-3 text-xs sm:text-sm font-body text-slate-900 bg-slate-50 border border-slate-300 rounded-xl focus:bg-white focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-all placeholder:text-slate-400"
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <label for="email" class="block text-xs sm:text-sm font-brand font-semibold text-slate-700 mb-1.5">
+                    Email Address <span class="text-rose-600 font-bold">*</span>
+                  </label>
+                  <div class="relative">
+                    <span class="absolute inset-y-0 left-0 flex items-center pl-3.5 pointer-events-none text-slate-400">
+                      <span class="material-symbols-outlined text-[18px]">mail</span>
+                    </span>
+                    <input 
+                      type="email" 
+                      id="email" 
+                      name="email" 
+                      required 
+                      placeholder="e.g. rahul@company.com"
+                      class="w-full pl-10 pr-3.5 py-3 text-xs sm:text-sm font-body text-slate-900 bg-slate-50 border border-slate-300 rounded-xl focus:bg-white focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-all placeholder:text-slate-400"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <!-- Row 3: Machine Specs / Requirements -->
+              <div>
+                <label for="message" class="block text-xs sm:text-sm font-brand font-semibold text-slate-700 mb-1.5">
+                  Project Requirements / Machine Specs <span class="text-slate-400 text-[11px] font-normal">(Optional)</span>
+                </label>
+                <textarea 
+                  id="message" 
+                  name="message" 
+                  rows="3" 
+                  placeholder="Briefly describe your required speed, kit or bottle format, control panel specs, or packaging bottleneck..."
+                  class="w-full p-3.5 text-xs sm:text-sm font-body text-slate-900 bg-slate-50 border border-slate-300 rounded-xl focus:bg-white focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-all placeholder:text-slate-400 resize-none"
+                ></textarea>
+              </div>
+
+              <!-- Notice on mandatory fields -->
+              <div class="flex items-center justify-between text-[11px] font-brand text-slate-500 pt-1">
+                <span><span class="text-rose-600 font-bold">*</span> Mandatory fields</span>
+                <span class="flex items-center gap-1 text-emerald-700 font-medium">
+                  <span class="material-symbols-outlined text-[14px]">lock</span>
+                  100% Confidential
+                </span>
+              </div>
+
+              <!-- Submit Button -->
+              <div class="pt-2">
+                <button 
+                  type="submit" 
+                  id="submit-inquiry-btn"
+                  class="w-full h-12 sm:h-14 bg-primary hover:bg-primary-hover active:scale-[0.99] text-white rounded-xl font-brand text-xs sm:text-sm font-bold uppercase tracking-wider shadow-md hover:shadow-lg transition-all flex items-center justify-center gap-2">
+                  <span>Submit Project Inquiry</span>
+                  <span class="material-symbols-outlined text-[18px]">send</span>
+                </button>
+              </div>
+
+            </form>
+
+            <!-- Success Notification State (Hidden initially) -->
+            <div id="form-success-message" class="hidden mt-4 p-5 rounded-2xl bg-emerald-50 border border-emerald-200 text-center animate-fadeIn">
+              <div class="w-12 h-12 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center mx-auto mb-3">
+                <span class="material-symbols-outlined text-[28px]">check_circle</span>
+              </div>
+              <h4 class="font-brand text-base sm:text-lg font-bold text-emerald-900">
+                Thank You! Your Inquiry Has Been Received.
+              </h4>
+              <p class="font-body text-xs sm:text-sm text-emerald-800 mt-1 max-w-md mx-auto leading-relaxed">
+                Our chief automation engineers at Rabale MIDC will review your project details and get in touch with you within 24 hours.
+              </p>
+              <button 
+                type="button" 
+                onclick="resetInquiryForm()" 
+                class="mt-4 inline-flex items-center gap-1.5 text-xs font-brand font-semibold text-emerald-700 hover:text-emerald-900 underline underline-offset-4">
+                <span>Submit another inquiry</span>
+                <span class="material-symbols-outlined text-[14px]">refresh</span>
+              </button>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       11. FORMAL CORPORATE FOOTER
+       ========================================================================= -->
+  <footer class="w-full bg-navy-deep text-white border-t border-slate-800 relative">
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 pt-12 sm:pt-16 pb-10 sm:pb-12">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+
+        <!-- Column 1: Corporate Profile (5 cols) -->
+        <div class="lg:col-span-5 flex flex-col gap-4">
+          <div class="flex items-center gap-3">
+            <div class="h-10 sm:h-12 w-auto bg-white/10 p-2 rounded-xl border border-white/15 flex items-center">
+              <img alt="Absolute Motion Logo" class="h-full w-auto object-contain" src="assets/images/logo.png" />
+            </div>
+          </div>
+
+          <p class="font-body text-xs sm:text-sm text-slate-300 leading-relaxed max-w-md">
+            Absolute Motion Private Limited delivers vision-guided packaging automation, custom electrical control panels, and multi-axis servo systems across India, supported by industrial workforce training at Prayas Automation Academy.
+          </p>
+
+          <div class="flex items-center gap-3 text-xs font-brand text-slate-400">
+            <span class="flex items-center gap-1 text-sky-400">
+              <span class="material-symbols-outlined text-[16px]">verified</span>
+              ISO Compliant Engineering
+            </span>
+            <span>•</span>
+            <span class="text-slate-300 font-semibold">MIDC Rabale, Navi Mumbai</span>
+          </div>
+        </div>
+
+        <!-- Column 2: Solutions Index (3 cols) -->
+        <div class="lg:col-span-3 flex flex-col gap-3 font-brand text-xs sm:text-sm">
+          <div class="text-xs uppercase tracking-wider text-sky-400 font-bold pb-1 border-b border-slate-800">
+            Engineering Solutions
+          </div>
+          <ul class="space-y-2 text-slate-300">
+            <li><a href="#packaging-focus" class="hover:text-white transition-colors">Packaging Line Automation</a></li>
+            <li><a href="#offerings" class="hover:text-white transition-colors">Control Panel Manufacturing</a></li>
+            <li><a href="#offerings" class="hover:text-white transition-colors">Industrial Control Systems</a></li>
+            <li><a href="#about" class="hover:text-white transition-colors">Prayas Automation Academy</a></li>
+            <li><a href="#case-studies" class="hover:text-white transition-colors">Case Studies Showcase</a></li>
+            <li><a href="#video-showcase" class="hover:text-white transition-colors">Video Demonstrations</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 3: Facility Credentials & Direct Desk (4 cols) -->
+        <div class="lg:col-span-4 flex flex-col gap-3 font-brand text-xs sm:text-sm">
+          <div class="text-xs uppercase tracking-wider text-sky-400 font-bold pb-1 border-b border-slate-800">
+            Facility &amp; Inquiries Desk
+          </div>
+          <div class="space-y-3 text-slate-300">
             <!-- Facility Address -->
-            <a href="https://maps.app.goo.gl/wUVHRY6RrFW6kCoU9" target="_blank"
-              class="flex items-start gap-2.5 hover:text-white transition-colors group">
+            <div class="flex items-start gap-2.5">
               <span class="material-symbols-outlined text-[18px] text-sky-400 flex-shrink-0 mt-0.5">location_on</span>
-              <span class="leading-relaxed">
-                R-601/1, TTC Industrial Area, Rabale MIDC,<br class="hidden sm:inline" /> Navi Mumbai - 400701,
-                Maharashtra
+              <span class="text-slate-300 leading-snug">
+                R-601/1, TTC Industrial Area, Thane-Belapur Road, Rabale MIDC,<br class="hidden sm:inline" /> Navi Mumbai - 400701,
+                Maharashtra, India
               </span>
-            </a>
+            </div>
 
-            <!-- Corporate Phone -->
-            <a href="tel:+912245000947" class="flex items-center gap-2.5 hover:text-white transition-colors group">
+            <!-- Direct Contact Placeholder (Clickable via tel:) -->
+            <a href="tel:+91XXXXXXXXXX" class="flex items-center gap-2.5 hover:text-white transition-colors group">
               <span class="material-symbols-outlined text-[18px] text-sky-400 flex-shrink-0">call</span>
               <div>
+                <span class="font-semibold text-white">+91 [Alister Sir Contact Number]</span>
+                <span class="block text-[10px] text-slate-400">Direct Engineering Consultation</span>
+              </div>
+            </a>
+
+            <!-- Corporate Landline -->
+            <a href="tel:+912245000947" class="flex items-center gap-2.5 hover:text-white transition-colors group">
+              <span class="material-symbols-outlined text-[18px] text-sky-400 flex-shrink-0">desk</span>
+              <div>
                 <span class="font-semibold text-white">+91-22-4500 0947</span>
-                <span class="block text-[10px] text-slate-400">Direct Engineering Inquiries</span>
+                <span class="block text-[10px] text-slate-400">Rabale MIDC Office Desk</span>
               </div>
             </a>
 
@@ -1325,18 +1740,16 @@
       </div>
     </div>
 
-    <!-- Formal Legal & Compliance Bar -->
-    <div class="border-t border-slate-800/90 bg-navy-surface/60 py-5">
-      <div
-        class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs font-brand text-slate-400 text-center sm:text-left">
+    <!-- Legal Bar -->
+    <div class="border-t border-slate-800/90 bg-navy-surface/60 py-4">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs font-brand text-slate-400 text-center sm:text-left">
         <div>
           <p>© 2026 Absolute Motion Private Limited. All Rights Reserved.</p>
         </div>
 
         <div class="flex items-center gap-6">
-          <span class="text-slate-500 hidden md:inline">CIN: Industrial Automation Equipment</span>
-          <a href="#discuss-project"
-            class="inline-flex items-center gap-1.5 text-sky-400 hover:text-white font-semibold transition-colors">
+          <span class="text-slate-500 hidden md:inline">TTC Industrial Area, Rabale MIDC</span>
+          <a href="#discuss-project" class="inline-flex items-center gap-1.5 text-sky-400 hover:text-white font-semibold transition-colors">
             <span>Discuss Your Project</span>
             <span class="material-symbols-outlined text-[14px]">arrow_forward</span>
           </a>
@@ -1344,6 +1757,99 @@
       </div>
     </div>
   </footer>
+
+  <!-- =========================================================================
+       12. INTERACTIVE JAVASCRIPT LOGIC
+       ========================================================================= -->
+  <script>
+    // Mobile navigation toggle
+    function toggleMobileMenu() {
+      const nav = document.getElementById('mobile-nav');
+      const icon = document.getElementById('mobile-menu-icon');
+      if (nav.classList.contains('hidden')) {
+        nav.classList.remove('hidden');
+        icon.textContent = 'close';
+      } else {
+        nav.classList.add('hidden');
+        icon.textContent = 'menu';
+      }
+    }
+
+    // Expandable / Collapsible Case Studies Toggle (Read More / Read Less)
+    function toggleCaseStudy(id) {
+      const details = document.getElementById(id + '-details');
+      const btn = document.getElementById(id + '-btn');
+      const icon = document.getElementById(id + '-icon');
+
+      if (!details || !btn || !icon) return;
+
+      if (details.classList.contains('hidden')) {
+        details.classList.remove('hidden');
+        btn.querySelector('span:first-child').textContent = 'Read Less';
+        icon.textContent = 'expand_less';
+      } else {
+        details.classList.add('hidden');
+        btn.querySelector('span:first-child').textContent = 'Read More';
+        icon.textContent = 'expand_more';
+      }
+    }
+
+    // AJAX Form Submission to FormSubmit
+    async function handleFormSubmit(event) {
+      event.preventDefault();
+      const btn = document.getElementById('submit-inquiry-btn');
+      const form = document.getElementById('project-inquiry-form');
+      const successMsg = document.getElementById('form-success-message');
+      
+      btn.disabled = true;
+      btn.innerHTML = `
+        <span class="inline-block animate-spin mr-2">⟳</span>
+        <span>Submitting Inquiry...</span>
+      `;
+      
+      try {
+        const formData = new FormData(form);
+        const data = Object.fromEntries(formData.entries());
+
+        await fetch('https://formsubmit.co/ajax/adsilva@absolutemotion.in', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          body: JSON.stringify(data)
+        });
+
+        form.classList.add('hidden');
+        successMsg.classList.remove('hidden');
+        successMsg.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      } catch (err) {
+        console.warn('Network issue during AJAX submission, attempting native submit fallback:', err);
+        try {
+          form.submit();
+        } catch (e) {
+          form.classList.add('hidden');
+          successMsg.classList.remove('hidden');
+        }
+      }
+    }
+
+    // Reset Form for another inquiry
+    function resetInquiryForm() {
+      const btn = document.getElementById('submit-inquiry-btn');
+      const form = document.getElementById('project-inquiry-form');
+      const successMsg = document.getElementById('form-success-message');
+      
+      form.reset();
+      btn.disabled = false;
+      btn.innerHTML = `
+        <span>Submit Project Inquiry</span>
+        <span class="material-symbols-outlined text-[18px]">send</span>
+      `;
+      successMsg.classList.add('hidden');
+      form.classList.remove('hidden');
+    }
+  </script>
 
 </body>
 
